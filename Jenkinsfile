@@ -12,7 +12,7 @@ pipeline {
         }
         stage('S3 Upload') {
             steps {
-                withAWS(region: 'ap-south-1', credentials: 'c3d086b9-dbb1-46fc-ad7f-b659f015c92b') {
+                withAWS(region: 'ap-south-1', credentials: '87f92de7-7d40-4039-aaae-2bb3bfd9cee7') {
                     sh 'ls -la build'
                     sh 'aws s3 cp build s3://jenkins-s3-project/ --recursive'
                 }
