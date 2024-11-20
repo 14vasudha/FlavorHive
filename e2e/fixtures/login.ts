@@ -1,6 +1,6 @@
 import { test as base } from "@playwright/test";
 import { LoginPage } from "../page-objects/login-page";
-import { SignupPage } from "../page-objects/signup-page";
+import { SignupPage } from "../page-objects/Signup/signup-page";
 import { RootPage } from "../page-objects/root-page";
 import { HeaderPage } from "../page-objects/header-page";
 import { WhatsCookingPage } from "../page-objects/WhatsCooking/whats-cooking-page";

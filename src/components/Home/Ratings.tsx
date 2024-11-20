@@ -2,7 +2,7 @@ const Ratings = () => {
   return (
     <section
       id="ratings"
-      className="flex items-center justify-center gap-6 bg-gray-100 px-2 py-4 text-center font-bold lg:space-x-16"
+      className="flex items-center justify-center gap-6 bg-gray30 px-2 py-4 text-center font-bold lg:space-x-16"
     >
       <span className="max-w-48 leading-snug md:max-w-96 md:text-2xl lg:max-w-fit">
         Our customers think we're&nbsp;

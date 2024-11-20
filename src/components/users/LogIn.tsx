@@ -5,6 +5,7 @@ import { zodValidator } from "@tanstack/zod-form-adapter";
 import { z } from "zod";
 import GoogleIcon from "../../assets/google.svg";
 import {
+  useSignInWithApple,
   useSignInWithGoogle,
   useSignInWithPassword,
 } from "../../services/use-mutations";
@@ -13,6 +14,7 @@ import WhatsCooking from "../Discover/WhatsCooking";
 
 const LogIn = () => {
   const { mutate: signInWithGoogleMutate } = useSignInWithGoogle();
+  const { mutate: signInWithAppleMutate } = useSignInWithApple();
   const {
     mutate: signInWithPasswordMutate,
     isSuccess: isSignInWithPasswordSuccess,
@@ -21,6 +23,10 @@ const LogIn = () => {
   const onSignInWithGoogle = async (e: any) => {
     e.preventDefault();
     signInWithGoogleMutate();
+  };
+  const onSignInWithApple = async (e: any) => {
+    e.preventDefault();
+    signInWithAppleMutate();
   };
 
   if (isSignInWithPasswordSuccess) {
@@ -161,6 +167,16 @@ const LogIn = () => {
                     Log In
                   </Button>
                   <div className="text-center text-sm font-medium">OR</div>
+                  <Button
+                    data-testid="btn-apple"
+                    size="full"
+                    display="flex"
+                    variant="apple"
+                    className="rounded-md text-sm normal-case"
+                    onClick={onSignInWithApple}
+                  >
+                     Sign in with Apple
+                  </Button>
                   <Button
                     data-testid="btn-google"
                     size="full"

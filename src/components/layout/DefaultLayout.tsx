@@ -1,7 +1,7 @@
 import Footer from "./Footer";
 import { Suspense } from "react";
 import Header from "./Header";
-import { Outlet, ScrollRestoration } from "@tanstack/react-router";
+import { Outlet, ScrollRestoration, useLocation } from "@tanstack/react-router";
 import { Bounce, ToastContainer } from "react-toastify";
 import React from "react";
 import "react-toastify/dist/ReactToastify.css";
@@ -18,11 +18,16 @@ const DefaultLayout = () => {
         })),
       );
 
+  const location = useLocation();
+  const isLoginRoute = location.pathname.includes("sign-in");
+
   return (
     <>
       <ScrollRestoration />
       <Header />
-      <div className="mt-12 flex min-h-screen w-screen flex-col bg-slate-50 lg:mt-16">
+      <div
+        className={`mt-12 flex min-h-screen w-screen flex-col lg:mt-16 ${isLoginRoute ? "bg-slate-50" : ""}`}
+      >
         <Outlet />
         <Footer />
       </div>

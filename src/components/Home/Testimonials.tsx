@@ -2,7 +2,7 @@ import { useLoaderData } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 const Testimonials = () => {
-  const testimonials = useLoaderData({ from: "/" }) || [];
+  const { testimonials } = useLoaderData({ from: "/" }) || [];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -44,11 +44,11 @@ const Testimonials = () => {
             Celebrating 10 years of happy customers
           </p>
           <p className="min-w-80 max-w-[509px] px-2 text-center font-chronicle text-lg font-black text-blue70 lg:px-8 lg:pb-2 lg:text-2xl">
-            {testimonials[currentIndex]?.description}
+            {testimonials![currentIndex]?.description}
           </p>
           <div className="h-1 w-24 bg-blue-info"></div>
           <p className="text-sm font-bold uppercase tracking-[2.4px] text-blue70 lg:pt-2">
-            — {testimonials[currentIndex]?.name}
+            — {testimonials![currentIndex]?.name}
           </p>
         </div>
       </div>

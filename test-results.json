@@ -167,12 +167,12 @@
                 {
                   "workerIndex": 0,
                   "status": "passed",
-                  "duration": 8733,
+                  "duration": 12203,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-03T06:25:29.849Z",
+                  "startTime": "2024-11-20T09:21:18.974Z",
                   "attachments": [
                     {
                       "name": "screenshot",
@@ -187,7 +187,7 @@
           ],
           "id": "d318381359a9b96acb1e-0161fcf79ea88ac850c1",
           "file": "home.spec.ts",
-          "line": 26,
+          "line": 32,
           "column": 1
         },
         {
@@ -205,12 +205,12 @@
                 {
                   "workerIndex": 1,
                   "status": "passed",
-                  "duration": 9284,
+                  "duration": 11830,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-03T06:25:29.921Z",
+                  "startTime": "2024-11-20T09:21:18.959Z",
                   "attachments": [
                     {
                       "name": "screenshot",
@@ -225,7 +225,7 @@
           ],
           "id": "d318381359a9b96acb1e-13d9665a5f818f46755b",
           "file": "home.spec.ts",
-          "line": 56,
+          "line": 66,
           "column": 1
         },
         {
@@ -243,12 +243,12 @@
                 {
                   "workerIndex": 2,
                   "status": "passed",
-                  "duration": 8608,
+                  "duration": 12176,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-03T06:25:29.848Z",
+                  "startTime": "2024-11-20T09:21:18.929Z",
                   "attachments": [
                     {
                       "name": "screenshot",
@@ -263,7 +263,7 @@
           ],
           "id": "d318381359a9b96acb1e-76cef138328dfede27ca",
           "file": "home.spec.ts",
-          "line": 26,
+          "line": 32,
           "column": 1
         },
         {
@@ -281,12 +281,12 @@
                 {
                   "workerIndex": 3,
                   "status": "passed",
-                  "duration": 9422,
+                  "duration": 12028,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-03T06:25:29.872Z",
+                  "startTime": "2024-11-20T09:21:18.964Z",
                   "attachments": [
                     {
                       "name": "screenshot",
@@ -301,7 +301,7 @@
           ],
           "id": "d318381359a9b96acb1e-1435665ee8e0e79653cc",
           "file": "home.spec.ts",
-          "line": 56,
+          "line": 66,
           "column": 1
         },
         {
@@ -319,12 +319,12 @@
                 {
                   "workerIndex": 4,
                   "status": "passed",
-                  "duration": 7428,
+                  "duration": 12285,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-03T06:25:41.172Z",
+                  "startTime": "2024-11-20T09:21:32.862Z",
                   "attachments": [
                     {
                       "name": "screenshot",
@@ -339,7 +339,7 @@
           ],
           "id": "d318381359a9b96acb1e-8e6c52f3fa8eedd311ef",
           "file": "home.spec.ts",
-          "line": 26,
+          "line": 32,
           "column": 1
         },
         {
@@ -357,12 +357,12 @@
                 {
                   "workerIndex": 5,
                   "status": "passed",
-                  "duration": 7637,
+                  "duration": 12314,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-03T06:25:41.359Z",
+                  "startTime": "2024-11-20T09:21:32.919Z",
                   "attachments": [
                     {
                       "name": "screenshot",
@@ -377,12 +377,12 @@
           ],
           "id": "d318381359a9b96acb1e-02d6f299462f397fcd0f",
           "file": "home.spec.ts",
-          "line": 56,
+          "line": 66,
           "column": 1
         },
         {
           "title": "Verify details on Home Screen",
-          "ok": true,
+          "ok": false,
           "tags": [],
           "tests": [
             {
@@ -394,28 +394,52 @@
               "results": [
                 {
                   "workerIndex": 6,
-                  "status": "passed",
-                  "duration": 6141,
-                  "errors": [],
+                  "status": "failed",
+                  "duration": 9120,
+                  "error": {
+                    "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: getByTestId('text-home-menu-title-mediterranean')\nExpected string: \u001b[32m\"mediterranean\"\u001b[39m\nReceived: <element(s) not found>\nCall log:\n  \u001b[2m- expect.toContainText with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('text-home-menu-title-mediterranean')\u001b[22m\n",
+                    "stack": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: getByTestId('text-home-menu-title-mediterranean')\nExpected string: \u001b[32m\"mediterranean\"\u001b[39m\nReceived: <element(s) not found>\nCall log:\n  \u001b[2m- expect.toContainText with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('text-home-menu-title-mediterranean')\u001b[22m\n\n    at HomeMenuPage.verifyTexts (/Users/apple/Desktop/Vishu/FlavorHive/e2e/page-objects/Home/home-menu-page.ts:61:47)\n    at HomeMenuPage.verifyHomeMenuScreenDetails (/Users/apple/Desktop/Vishu/FlavorHive/e2e/page-objects/Home/home-menu-page.ts:52:5)\n    at verifyHomePage (/Users/apple/Desktop/Vishu/FlavorHive/e2e/home.spec.ts:29:3)\n    at /Users/apple/Desktop/Vishu/FlavorHive/e2e/home.spec.ts:48:5",
+                    "location": {
+                      "file": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/page-objects/Home/home-menu-page.ts",
+                      "column": 47,
+                      "line": 61
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mpage-objects/Home/home-menu-page.ts:61\n\n\u001b[0m \u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mchooseText)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"Choose from\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 60 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mweeklyOptionsText)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"100+\"\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 61 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mmediterraneanTitleText)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"mediterranean\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 62 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstarterTitleText)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"starter\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 63 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpancakeTitleText)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"pan\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 64 |\u001b[39m   }\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/page-objects/Home/home-menu-page.ts",
+                        "column": 47,
+                        "line": 61
+                      },
+                      "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: getByTestId('text-home-menu-title-mediterranean')\nExpected string: \u001b[32m\"mediterranean\"\u001b[39m\nReceived: <element(s) not found>\nCall log:\n  \u001b[2m- expect.toContainText with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('text-home-menu-title-mediterranean')\u001b[22m\n\n\n\u001b[90m   at \u001b[39mpage-objects/Home/home-menu-page.ts:61\n\n\u001b[0m \u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mchooseText)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"Choose from\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 60 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mweeklyOptionsText)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"100+\"\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 61 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mmediterraneanTitleText)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"mediterranean\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 62 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstarterTitleText)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"starter\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 63 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpancakeTitleText)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"pan\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 64 |\u001b[39m   }\u001b[0m\n\n\u001b[2m    at HomeMenuPage.verifyTexts (/Users/apple/Desktop/Vishu/FlavorHive/e2e/page-objects/Home/home-menu-page.ts:61:47)\u001b[22m\n\u001b[2m    at HomeMenuPage.verifyHomeMenuScreenDetails (/Users/apple/Desktop/Vishu/FlavorHive/e2e/page-objects/Home/home-menu-page.ts:52:5)\u001b[22m\n\u001b[2m    at verifyHomePage (/Users/apple/Desktop/Vishu/FlavorHive/e2e/home.spec.ts:29:3)\u001b[22m\n\u001b[2m    at /Users/apple/Desktop/Vishu/FlavorHive/e2e/home.spec.ts:48:5\u001b[22m"
+                    }
+                  ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-03T06:25:41.840Z",
+                  "startTime": "2024-11-20T09:21:32.937Z",
                   "attachments": [
                     {
                       "name": "screenshot",
                       "contentType": "image/png",
-                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/home-Verify-details-on-Home-Screen-chromium3/test-finished-1.png"
+                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/home-Verify-details-on-Home-Screen-chromium3/test-failed-1.png"
                     }
-                  ]
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/page-objects/Home/home-menu-page.ts",
+                    "column": 47,
+                    "line": 61
+                  }
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
           "id": "d318381359a9b96acb1e-86d50f6df911313b8237",
           "file": "home.spec.ts",
-          "line": 26,
+          "line": 32,
           "column": 1
         },
         {
@@ -433,12 +457,12 @@
                 {
                   "workerIndex": 7,
                   "status": "passed",
-                  "duration": 6874,
+                  "duration": 11924,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-03T06:25:41.955Z",
+                  "startTime": "2024-11-20T09:21:33.010Z",
                   "attachments": [
                     {
                       "name": "screenshot",
@@ -453,7 +477,7 @@
           ],
           "id": "d318381359a9b96acb1e-d71f7504c3584a83bb9b",
           "file": "home.spec.ts",
-          "line": 56,
+          "line": 66,
           "column": 1
         },
         {
@@ -471,12 +495,12 @@
                 {
                   "workerIndex": 8,
                   "status": "passed",
-                  "duration": 5740,
+                  "duration": 11119,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-03T06:25:49.862Z",
+                  "startTime": "2024-11-20T09:21:46.276Z",
                   "attachments": [
                     {
                       "name": "screenshot",
@@ -491,7 +515,7 @@
           ],
           "id": "d318381359a9b96acb1e-9e9f9b469f28d79fe5bf",
           "file": "home.spec.ts",
-          "line": 26,
+          "line": 32,
           "column": 1
         },
         {
@@ -509,12 +533,12 @@
                 {
                   "workerIndex": 9,
                   "status": "passed",
-                  "duration": 6720,
+                  "duration": 10795,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-03T06:25:50.042Z",
+                  "startTime": "2024-11-20T09:21:47.450Z",
                   "attachments": [
                     {
                       "name": "screenshot",
@@ -529,7 +553,7 @@
           ],
           "id": "d318381359a9b96acb1e-3e1115fecf3d347b43ba",
           "file": "home.spec.ts",
-          "line": 56,
+          "line": 66,
           "column": 1
         },
         {
@@ -547,12 +571,12 @@
                 {
                   "workerIndex": 10,
                   "status": "passed",
-                  "duration": 16883,
+                  "duration": 17951,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-03T06:25:50.531Z",
+                  "startTime": "2024-11-20T09:21:47.425Z",
                   "attachments": [
                     {
                       "name": "screenshot",
@@ -567,7 +591,7 @@
           ],
           "id": "d318381359a9b96acb1e-c8b24ec6ea68f95e9ca1",
           "file": "home.spec.ts",
-          "line": 26,
+          "line": 32,
           "column": 1
         },
         {
@@ -585,12 +609,12 @@
                 {
                   "workerIndex": 11,
                   "status": "passed",
-                  "duration": 20396,
+                  "duration": 17594,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-03T06:25:51.130Z",
+                  "startTime": "2024-11-20T09:21:50.204Z",
                   "attachments": [
                     {
                       "name": "screenshot",
@@ -605,7 +629,7 @@
           ],
           "id": "d318381359a9b96acb1e-917d14f5f68cb5b7cecc",
           "file": "home.spec.ts",
-          "line": 56,
+          "line": 66,
           "column": 1
         },
         {
@@ -623,12 +647,12 @@
                 {
                   "workerIndex": 12,
                   "status": "passed",
-                  "duration": 9683,
+                  "duration": 12861,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-03T06:25:58.587Z",
+                  "startTime": "2024-11-20T09:22:00.464Z",
                   "attachments": [
                     {
                       "name": "screenshot",
@@ -643,7 +667,7 @@
           ],
           "id": "d318381359a9b96acb1e-480ad4f4a8c3283f0759",
           "file": "home.spec.ts",
-          "line": 26,
+          "line": 32,
           "column": 1
         },
         {
@@ -661,12 +685,12 @@
                 {
                   "workerIndex": 13,
                   "status": "passed",
-                  "duration": 10493,
+                  "duration": 13266,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-03T06:25:59.785Z",
+                  "startTime": "2024-11-20T09:22:01.067Z",
                   "attachments": [
                     {
                       "name": "screenshot",
@@ -681,7 +705,7 @@
           ],
           "id": "d318381359a9b96acb1e-686d6fa2d5989c5fb0b4",
           "file": "home.spec.ts",
-          "line": 56,
+          "line": 66,
           "column": 1
         }
       ]
@@ -689,11 +713,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2024-11-03T06:25:28.768Z",
-    "duration": 47938.396,
-    "expected": 14,
+    "startTime": "2024-11-20T09:21:17.674Z",
+    "duration": 57210.577,
+    "expected": 13,
     "skipped": 0,
-    "unexpected": 0,
+    "unexpected": 1,
     "flaky": 0
   }
 }

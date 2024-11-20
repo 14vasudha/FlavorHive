@@ -5,6 +5,8 @@ import WhatsCooking from "../Discover/WhatsCooking";
 import GettingStarted from "./GettingStarted";
 import Testimonials from "./Testimonials";
 import Ratings from "./Ratings";
+import MealsShipped from "./MealsShipped";
+import HomeMenu from "./HomeMenu";
 
 const Home = () => {
   return (
@@ -13,6 +15,8 @@ const Home = () => {
         <HomeHero />
         <HomeBanner />
         <Ratings />
+        <HomeMenu />
+        <MealsShipped />
         <Testimonials />
         <GettingStarted />
       </section>

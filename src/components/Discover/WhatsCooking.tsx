@@ -62,7 +62,7 @@ const WhatsCooking = () => {
   return (
     <section
       id="whats-cooking"
-      className="bg-gray-100 pb-4 shadow-inner lg:grid lg:grid-flow-col lg:justify-evenly"
+      className="bg-gray30 pb-4 shadow-inner lg:grid lg:grid-flow-col lg:justify-evenly"
     >
       <div id="follow-us" className="p-5 lg:border-r-2 lg:border-gray-200">
         <h3

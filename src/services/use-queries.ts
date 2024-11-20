@@ -1,15 +1,20 @@
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import {
   getAllCustomerSupportLinks,
   getAllDiscountedPeopleLinks,
   getHowItWorks,
   getLegalLinks,
+  getMealsShippedData,
   getOurVisionScreenDetails,
   getProductsLinks,
+  getSignupAdditionalInfo,
   getTeamLinks,
   getTestimonials,
 } from "./api";
 import { queryClient } from "../App";
+import { getHomeMenu } from "./edamam-api";
+
+const homeScreenStaleTime = 300000; // 5 minutes. Data wouldn't change that quickly
 
 export const useGetAllCustomerSupportLinks = () => {
   return useQuery({
@@ -62,18 +67,57 @@ export const useGetOurVisionScreenDetails = async () => {
   });
 };
 
-export const useGetTestimonials = async () => {
+const useGetTestimonials = async () => {
   return await queryClient.ensureQueryData({
     queryKey: ["testimonials"],
     queryFn: getTestimonials,
     revalidateIfStale: true,
+    staleTime: homeScreenStaleTime,
   });
 };
 
-export const useGetHowItWorks = async () => {
+const useGetMealsShipped = async () => {
+  return await queryClient.ensureQueryData({
+    queryKey: ["meals shipped"],
+    queryFn: getMealsShippedData,
+    revalidateIfStale: true,
+    staleTime: homeScreenStaleTime,
+  });
+};
+
+const useGetHowItWorks = async () => {
   return await queryClient.ensureQueryData({
     queryKey: ["how it works"],
     queryFn: getHowItWorks,
     revalidateIfStale: true,
   });
 };
+
+const useGetSignupAdditionalInfo = async () => {
+  return await queryClient.ensureQueryData({
+    queryKey: ["signup additional info"],
+    queryFn: getSignupAdditionalInfo,
+    revalidateIfStale: true,
+  });
+};
+
+export const useGetHomeMenu = () => {
+  return useQuery({
+    queryKey: ["home menu"],
+    queryFn: getHomeMenu,
+    refetchOnWindowFocus: true,
+    staleTime: homeScreenStaleTime,
+    retry: false,
+    placeholderData: keepPreviousData,
+  });
+};
+
+export const getHomeData = async () => ({
+  testimonials: await useGetTestimonials(),
+  mealsShipped: await useGetMealsShipped(),
+});
+
+export const getSignupData = async () => ({
+  howItWorks: await useGetHowItWorks(),
+  additionalInfo: await useGetSignupAdditionalInfo(),
+});

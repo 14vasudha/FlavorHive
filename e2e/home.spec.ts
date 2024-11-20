@@ -5,6 +5,8 @@ import { HomeBannerPage } from "./page-objects/Home/home-banner-page";
 import { HomeHeroPage } from "./page-objects/Home/home-hero-page";
 import { HomeTestimonialsPage } from "./page-objects/Home/home-testimonials-page";
 import { HomeRatingsPage } from "./page-objects/Home/home-ratings-page";
+import { HomeMealsShippedPage } from "./page-objects/Home/home-meals-shipped-page";
+import { HomeMenuPage } from "./page-objects/Home/home-menu-page";
 
 const verifyHomePage = async (
   homeHeroPage: HomeHeroPage,
@@ -12,7 +14,9 @@ const verifyHomePage = async (
   homeRatingsPage: HomeRatingsPage,
   homeTestimonialsPage: HomeTestimonialsPage,
   homeGettingStartedPage: HomeGettingStartedPage,
+  homeMealsShippedPage: HomeMealsShippedPage,
   width: number,
+  homeMenuPage: HomeMenuPage,
 ) => {
   await homeHeroPage.verifyHeroImg(width);
   await homeHeroPage.verifyHeroDetails();
@@ -21,6 +25,8 @@ const verifyHomePage = async (
   await homeRatingsPage.verifyHomeRatingsDetails(width);
   await homeTestimonialsPage.verifyTestimonialsDetails();
   await homeGettingStartedPage.verifyGettingStartedDetails();
+  await homeMealsShippedPage.verifyMealsShippedPage();
+  await homeMenuPage.verifyHomeMenuScreenDetails();
 };
 
 homeTest(
@@ -31,6 +37,8 @@ homeTest(
     homeBannerPage,
     homeGettingStartedPage,
     homeTestimonialsPage,
+    homeMealsShippedPage,
+    homeMenuPage,
     homeRatingsPage,
     whatsCookingPage,
     viewport,
@@ -43,7 +51,9 @@ homeTest(
       homeRatingsPage,
       homeTestimonialsPage,
       homeGettingStartedPage,
+      homeMealsShippedPage,
       viewport?.width!,
+      homeMenuPage,
     );
     await verifyWhatsCookingPage(
       whatsCookingPage,
@@ -63,9 +73,11 @@ homeTest(
     homeHeroPage,
     homeBannerPage,
     homeRatingsPage,
+    homeMealsShippedPage,
     homeTestimonialsPage,
     homeGettingStartedPage,
     whatsCookingPage,
+    homeMenuPage,
     viewport,
     browserName,
   }) => {
@@ -81,7 +93,9 @@ homeTest(
       homeRatingsPage,
       homeTestimonialsPage,
       homeGettingStartedPage,
+      homeMealsShippedPage,
       viewport?.width!,
+      homeMenuPage,
     );
     await verifyWhatsCookingPage(
       whatsCookingPage,

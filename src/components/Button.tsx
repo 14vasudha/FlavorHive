@@ -40,6 +40,13 @@ export const buttonStyles = cva(
           "gap-3",
           "bg-white",
         ],
+        apple: [
+          "border-gray10",
+          "hover:border-primary-black",
+          "hover:bg-primary-black",
+          "bg-black10",
+          "text-white",
+        ],
         icon: [
           "rounded-full",
           "w-10",

@@ -63,12 +63,31 @@ export const getTestimonials = async () => {
   return testimonials;
 };
 
+export const getMealsShippedData = async () => {
+  const { data: mealsShippedData } = await supabase
+    .schema("home")
+    .from("meals_shipped")
+    .select("id, image, name, description_primary, description_secondary, alt")
+    .order("id");
+  return mealsShippedData;
+};
+
 export const getHowItWorks = async () => {
   const { data: howItWorks } = await supabase
     .schema("sign_up")
     .from("how_it_works")
-    .select("id, name, description");
+    .select("id, name, description")
+    .order("id");
   return howItWorks;
+};
+
+export const getSignupAdditionalInfo = async () => {
+  const { data: additionalInfo } = await supabase
+    .schema("sign_up")
+    .from("additional_info")
+    .select("id, name, description")
+    .order("id");
+  return additionalInfo;
 };
 
 export const signUpWithPassword = async (user: User) => {
@@ -88,6 +107,17 @@ export const signUpWithPassword = async (user: User) => {
 export const signInWithGoogle = async () => {
   const { data, error: signInError } = await supabase.auth.signInWithOAuth({
     provider: "google",
+  });
+
+  if (signInError) {
+    throw signInError;
+  }
+  return data;
+};
+
+export const signInWithApple = async () => {
+  const { data, error: signInError } = await supabase.auth.signInWithOAuth({
+    provider: "apple",
   });
 
   if (signInError) {

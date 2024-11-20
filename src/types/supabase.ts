@@ -216,6 +216,36 @@ export type Database = {
   }
   home: {
     Tables: {
+      meals_shipped: {
+        Row: {
+          alt: string
+          created_at: string
+          description_primary: string
+          description_secondary: string | null
+          id: number
+          image: string
+          name: string
+        }
+        Insert: {
+          alt: string
+          created_at?: string
+          description_primary: string
+          description_secondary?: string | null
+          id?: number
+          image: string
+          name: string
+        }
+        Update: {
+          alt?: string
+          created_at?: string
+          description_primary?: string
+          description_secondary?: string | null
+          id?: number
+          image?: string
+          name?: string
+        }
+        Relationships: []
+      }
       testimonials: {
         Row: {
           created_at: string
@@ -321,6 +351,27 @@ export type Database = {
   }
   sign_up: {
     Tables: {
+      additional_info: {
+        Row: {
+          created_at: string
+          description: string
+          id: number
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          id?: number
+          name: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          id?: number
+          name?: string
+        }
+        Relationships: []
+      }
       how_it_works: {
         Row: {
           created_at: string

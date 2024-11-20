@@ -7,7 +7,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      retry: 5,
+      retry: 2,
       retryDelay: 1000,
     },
   },

@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import {
   insertNewsLetterSubscriber,
+  signInWithApple,
   signInWithGoogle,
   signInWithPassword,
   signOut,
@@ -26,6 +27,14 @@ export const useSignInWithGoogle = () => {
   });
 };
 
+export const useSignInWithApple = () => {
+  return useMutation({
+    mutationKey: ["signIn", "Apple"],
+    mutationFn: () => signInWithApple(),
+    onError: (error) => toast.error(error.message),
+  });
+};
+
 export const useSignOut = () => {
   return useMutation({
     mutationKey: ["signOut"],
@@ -38,6 +47,7 @@ export const useSignInWithPassword = () => {
   return useMutation({
     mutationKey: ["signIn", "passoword"],
     mutationFn: (user: User) => signInWithPassword(user),
+    onSuccess: () => toast.success("Login successful"),
     onError: (error) => toast.error(error.message),
   });
 };

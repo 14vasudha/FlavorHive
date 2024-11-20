@@ -38,7 +38,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-blue60 mt-auto grid grid-cols-[100px_120px_120px_1fr_1fr] p-[2%] text-xs text-footer-primary md:grid-cols-5 md:p-[3%] lg:p-[4%] xl:px-[8%] xl:text-sm">
+    <footer className="mt-auto grid grid-cols-[100px_120px_120px_1fr_1fr] bg-blue60 p-[2%] text-xs text-footer-primary md:grid-cols-5 md:p-[3%] lg:p-[4%] xl:px-[8%] xl:text-sm">
       {productLinks.map(({ links, title }, id) => (
         <section key={id} className="space-y-2">
           {title && (

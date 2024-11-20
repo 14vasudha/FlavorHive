@@ -4,9 +4,9 @@ import {
   createRouter,
 } from "@tanstack/react-router";
 import {
-  useGetHowItWorks,
+  getHomeData,
+  getSignupData,
   useGetOurVisionScreenDetails,
-  useGetTestimonials,
 } from "./services/use-queries";
 import DefaultLayout from "./components/layout/DefaultLayout";
 
@@ -18,7 +18,7 @@ const rootRoute = createRootRoute({
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/",
-  loader: useGetTestimonials,
+  loader: getHomeData,
 }).lazy(() => import("./components/Home/Home").then((d) => d.Route));
 
 const aboutRoute = createRoute({
@@ -74,7 +74,7 @@ const signInRoute = createRoute({
 const signUpRoute = createRoute({
   getParentRoute: () => usersRoute,
   path: "sign-up",
-  loader: useGetHowItWorks,
+  loader: getSignupData,
 }).lazy(() => import("./components/users/SignUp").then((d) => d.Route));
 
 const menuRoute = createRoute({
