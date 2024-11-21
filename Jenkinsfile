@@ -20,7 +20,7 @@ pipeline {
                     $class: 'AmazonWebServicesCredentialsBinding', 
                     credentialsId: 'b6d800da-a9fb-4d09-81b5-b946d993e45b'
                 ]]) {
-                    sh 'aws s3 sync build/ s3://flavorhive --delete'
+                    sh 'aws s3 sync build/ s3://flavorhive'
                 }
             }
         }
