@@ -14,20 +14,19 @@ pipeline {
                 sh 'npm install'
             }
         }
-      stage('Deploy to S3') {
+    stage('Build Application') {
             steps {
-                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-credentials-id']]) {
-                    sh 'aws s3 sync build/ s3://flavorhive --delete'
-                }
+                // Build the React application
+                sh 'npm run build'
             }
         }
-    }
-    post {
-        success {
-            echo 'React app deployed successfully to S3!'
-        }
-        failure {
-            echo 'Deployment failed.'
+        stage('Deploy to S3') {
+            steps {
+                // Deploy build files to S3
+                withAWS(credentials: 'aws-credentials-id', region: 'ap-south-1') {
+                    sh 'aws s3 sync build/ s3://flavorhive/ --delete'
+                }
+            }
         }
     }
 }
