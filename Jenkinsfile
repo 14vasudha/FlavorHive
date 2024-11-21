@@ -14,15 +14,23 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Build') {
+         stage('Deploy to S3') {
             steps {
-                sh 'npm run build'
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding', 
+                    credentialsId: 'b6d800da-a9fb-4d09-81b5-b946d993e45b'
+                ]]) {
+                    sh 'aws s3 sync build/ s3://flavorhive --delete'
+                }
             }
         }
-        stage('Deploy') {
-    steps {
-        sh 'aws s3 sync build/ s3://flavorhive --delete'
     }
-}
+    post {
+        success {
+            echo 'Deployment to S3 completed successfully!'
+        }
+        failure {
+            echo 'Deployment failed. Check the logs for more details.'
+        }
     }
 }
