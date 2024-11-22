@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        AWS_ACCESS_KEY_ID ='aws credential' // Replace with your Jenkins credentials ID
-        AWS_SECRET_ACCESS_KEY ='aws credential'
+        AWS_ACCESS_KEY_ID ='aws credential keys' // Replace with your Jenkins credentials ID
+        AWS_SECRET_ACCESS_KEY ='aws credential keys'
         S3_BUCKET = 'flavorhive'
     }
     stages {
