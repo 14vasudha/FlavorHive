@@ -4,6 +4,8 @@ pipeline {
         AWS_ACCESS_KEY_ID = credentials('my-aws-credentials') // replace with your credentials ID
         AWS_SECRET_ACCESS_KEY = credentials('my-aws-credentials') // replace with your credentials ID
         AWS_DEFAULT_REGION = 'ap-south-1'  // specify your AWS region
+        VITE_SUPABASE_URL = credentials('database-id')
+        VITE_SUPABASE_KEY = credentials('database-key')
     }
     stages {
         stage('Install Dependencies') {
