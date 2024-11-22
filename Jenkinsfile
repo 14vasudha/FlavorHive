@@ -23,10 +23,10 @@ pipeline {
         }
         stage('Deploy to S3') {
             steps {
-                sh '''
-                aws s3 sync dist/ s3://flavorhive --delete
-                '''
+              echo 'Deploying to AWS S3'
+                sh 'aws s3 sync ./dist/ s3://flavorhive --delete'  // Example S3 deploy
+            }
             }
         }
     }
-}
+
