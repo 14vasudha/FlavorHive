@@ -1,9 +1,9 @@
 pipeline {
     agent any
     environment {
-        AWS_ACCESS_KEY_ID ='aws credential keys' // Replace with your Jenkins credentials ID
-        AWS_SECRET_ACCESS_KEY ='aws credential keys'
-        S3_BUCKET = 'flavorhive'
+        AWS_ACCESS_KEY_ID = 'my-aws-credentials' // replace with your credentials ID
+        AWS_SECRET_ACCESS_KEY = 'my-aws-credentials' // replace with your credentials ID
+        AWS_DEFAULT_REGION = 'ap-south-1'  // specify your AWS region
     }
     stages {
         stage('Install Dependencies') {
@@ -24,7 +24,7 @@ pipeline {
         stage('Deploy to S3') {
             steps {
                 sh '''
-                aws s3 sync dist/ s3://$S3_BUCKET --delete
+                aws s3 sync dist/ s3://flavorhive --delete
                 '''
             }
         }
