@@ -2,10 +2,8 @@ import { createClient } from "@supabase/supabase-js";
 import { Database } from "./types/supabase";
 import { TypedSupabaseClient } from "./types/types";
 
-const supabaseUrl =
-  import.meta.env?.VITE_SUPABASE_URL || process.env.VITE_SUPABASE_URL;
-const supabaseKey =
-  import.meta.env?.VITE_SUPABASE_KEY || process.env.VITE_SUPABASE_KEY;
+const supabaseUrl = "https://opmliiavikfniknrvlgt.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9wbWxpaWF2aWtmbmlrbnJ2bGd0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTc3NDMzNTIsImV4cCI6MjAzMzMxOTM1Mn0.mG2HJBsvHNkWs4cxOrNSEzYSld_ZHE4SdH3g05EZj8I";
 const supabase: TypedSupabaseClient = createClient<Database>(
   supabaseUrl,
   supabaseKey,
