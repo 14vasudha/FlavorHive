@@ -26,7 +26,7 @@ jobs:
 
     - name: Merge Changes from Upstream
       run: |
-        git merge upstream/main --no-edit || echo "No changes to merge."
+       git merge upstream/main --no-edit --allow-unrelated-histories || echo "No changes to merge."
 
     - name: Push Changes to Fork
       env:
