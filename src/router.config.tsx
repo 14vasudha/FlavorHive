@@ -80,7 +80,7 @@ const signUpRoute = createRoute({
 const menuRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "on-the-menu",
-  component: () => <p>We are building the menu</p>,
+  component: () => <p>We are building the menu. Please visit later</p>,
 });
 
 const helpCenterRoute = createRoute({
