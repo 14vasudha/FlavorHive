@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    triggers {
+        githubPush() // Automatically triggers the pipeline on a GitHub push event
+    }
     environment {
         AWS_ACCESS_KEY_ID = credentials('my-aws-credentials') // replace with your credentials ID
         AWS_SECRET_ACCESS_KEY = credentials('my-aws-credentials') // replace with your credentials ID
