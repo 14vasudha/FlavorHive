@@ -38,9 +38,12 @@ jobs:
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v5
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        commit-message: "Merge updates from upstream"
-        branch: update-from-upstream
-        title: "Sync with Upstream Repository"
-        body: |
-          This PR syncs the fork with the upstream repository.
+       token: ${{ secrets.GITHUB_TOKEN }}
+       commit-message: "Sync changes from upstream"
+       branch: update-from-upstream  # Branch where changes are committed
+       base: main                    # Target branch for the PR
+       title: "Merge Updates from Upstream"
+       body: |
+          This pull request merges changes from the upstream repository into the fork.
+       labels: "sync"
+ 
