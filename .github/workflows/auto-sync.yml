@@ -24,12 +24,23 @@ jobs:
         git remote | grep upstream || git remote add upstream https://github.com/Vishu-Organization/FlavorHive
         git fetch upstream
 
-    - name: Merge Changes from Upstream
+    - name: Create Branch for Upstream Changes
       run: |
-       git merge upstream/main --no-edit --allow-unrelated-histories --strategy=recursive --strategy-option=theirs || echo "No changes to merge."
+        git checkout -b update-from-upstream
+        git merge upstream/main --no-edit --allow-unrelated-histories --strategy=recursive --strategy-option=theirs || echo "No changes to merge."
 
-    - name: Push Changes to Fork
+    - name: Push Branch to Fork
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        git push origin main
+        git push -u origin update-from-upstream || echo "No changes to push."
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: "Merge updates from upstream"
+        branch: update-from-upstream
+        title: "Sync with Upstream Repository"
+        body: |
+          This PR syncs the fork with the upstream repository.
