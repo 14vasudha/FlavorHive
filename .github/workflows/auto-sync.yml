@@ -29,14 +29,14 @@ jobs:
         git remote | grep upstream || git remote add upstream https://github.com/Vishu-Organization/FlavorHive
         git fetch upstream
 
-    - name: Create Branch for Upstream Changes
-      run: |
-        git checkout -b update-from-upstream
-        git merge upstream/main --strategy=recursive --strategy-option=ours --no-edit || echo "No changes to merge."
-        if git diff --quiet; then
-          echo "No changes detected. Exiting.";
-          exit 0;
-        fi
+        - name: Create Branch for Upstream Changes
+          run: |
+           git checkout -b update-from-upstream
+           git merge upstream/main --no-edit --allow-unrelated-histories --strategy=recursive --strategy-option=theirs || echo "No changes to merge."
+           if git diff --quiet; then
+            echo "No changes detected. Exiting.";
+            exit 0;
+           fi
 
     - name: Debug Git Status
       run: |
