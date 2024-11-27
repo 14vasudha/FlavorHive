@@ -3,7 +3,11 @@ name: Auto-Sync Fork
 on:
   schedule:
     - cron: "0 */12 * * *"
-  workflow_dispatch: # Allows manual triggering
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   sync:
@@ -13,7 +17,8 @@ jobs:
     - name: Checkout Fork Repository
       uses: actions/checkout@v4
       with:
-        ref: main 
+        fetch-depth: 0
+
     - name: Configure Git
       run: |
         git config user.name "GitHub Actions Bot"
@@ -27,23 +32,37 @@ jobs:
     - name: Create Branch for Upstream Changes
       run: |
         git checkout -b update-from-upstream
-        git merge upstream/main --no-edit --allow-unrelated-histories --strategy=recursive --strategy-option=theirs || echo "No changes to merge."
+        git merge upstream/main --strategy=recursive --strategy-option=ours --no-edit || echo "No changes to merge."
+        if git diff --quiet; then
+          echo "No changes detected. Exiting.";
+          exit 0;
+        fi
+
+    - name: Debug Git Status
+      run: |
+        git status
+        git log -3 --oneline
+        git remote -v
+        git branch -vv
 
     - name: Push Branch to Fork
+      if: success()
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git push -u origin update-from-upstream || echo "No changes to push."
 
     - name: Create Pull Request
+      if: success()
       uses: peter-evans/create-pull-request@v5
       with:
-       token: ${{ secrets.GITHUB_TOKEN }}
-       commit-message: "Sync changes from upstream"
-       branch: update-from-upstream  # Branch where changes are committed
-       base: main                    # Target branch for the PR
-       title: "Merge Updates from Upstream"
-       body: |
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: "Sync changes from upstream"
+        branch: update-from-upstream
+        base: main
+        title: "Merge Updates from Upstream"
+        body: |
           This pull request merges changes from the upstream repository into the fork.
-       labels: "sync"
+        labels: "sync"
+
  
