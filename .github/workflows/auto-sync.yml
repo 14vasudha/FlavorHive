@@ -59,8 +59,8 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: "Sync changes from upstream"
-        branch: main
-        base: update-from-upstream
+        branch: update-from-upstream
+        base: main
         title: "Merge Updates from Upstream"
         body: |
           This pull request merges changes from the upstream repository into the fork.
