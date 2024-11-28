@@ -68,5 +68,5 @@ jobs:
         committer: GitHub <noreply@github.com>
         author: 14vasudha <14vasudha@users.noreply.github.com>
         signoff: false
-        delete-branch: true
+        delete-branch: false
         draft: false
