@@ -26,26 +26,33 @@ jobs:
           git remote add upstream https://github.com/Vishu-Organization/FlavorHive
           git fetch upstream
 
-      - name: Check for updates and create PR
+      - name: Check for updates
+        id: check_updates
         run: |
-          # Check if upstream changes exist
           if [ "$(git rev-parse HEAD)" != "$(git rev-parse upstream/main)" ]; then
-              echo "Upstream changes detected. Preparing to create a PR..."
-              TIMESTAMP=$(date +%Y%m%d%H%M%S)
-              UPDATE_BRANCH="update-from-upstream-$TIMESTAMP"
-              
-              # Create and push the update branch
-              git checkout -b "$UPDATE_BRANCH"
-              git merge upstream/main --no-edit
-              git push origin "$UPDATE_BRANCH"
-
-              # Create a Pull Request
-              gh pr create --title "Sync from upstream" \
-                           --body "This PR syncs changes from the upstream repository." \
-                           --head "$UPDATE_BRANCH" \
-                           --base main
+              echo "has_updates=true" >> $GITHUB_ENV
           else
-              echo "No updates from upstream."
+              echo "has_updates=false" >> $GITHUB_ENV
           fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create a new branch and sync changes
+        if: env.has_updates == 'true'
+        run: |
+          TIMESTAMP=$(date +%Y%m%d%H%M%S)
+          UPDATE_BRANCH="update-from-upstream-$TIMESTAMP"
+          git checkout -b "$UPDATE_BRANCH"
+          git merge upstream/main --no-edit
+          git push origin "$UPDATE_BRANCH"
+
+      - name: Create Pull Request
+        if: env.has_updates == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Sync changes from upstream"
+          branch: ${{ steps.create_branch.outputs.branch }}
+          title: "Sync from upstream"
+          body: "This PR syncs changes from the upstream repository."
+          base: main
+          labels: "sync"
+
