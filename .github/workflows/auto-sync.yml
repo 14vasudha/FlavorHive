@@ -40,10 +40,6 @@ jobs:
           git reset --hard upstream/main
         }
 
-    - name: Skip Cherry-pick (if commit is not found)
-      run: |
-        echo "Commit not found in upstream/main, skipping cherry-pick."
-
     - name: Debug Git Status
       run: |
         git status
@@ -74,4 +70,3 @@ jobs:
         signoff: false
         delete-branch: false
         draft: false
-
