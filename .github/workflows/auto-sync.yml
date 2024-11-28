@@ -2,8 +2,8 @@ name: Auto-Sync Fork
 
 on:
   schedule:
-    - cron: "*/5 * * * *" # Run every 12 hours
-  workflow_dispatch: # Allows manual triggering
+    - cron: "*/5 * * * *"  # Every 2 minutes (adjust as needed)
+  workflow_dispatch:  # Allows manual triggering
 
 permissions:
   contents: write
@@ -14,19 +14,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Checkout the forked repository
     - name: Checkout Fork Repository
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
 
-    # Configure Git to set user name and email for commits
     - name: Configure Git
       run: |
         git config user.name "GitHub Actions Bot"
         git config user.email "actions@github.com"
 
-    # Add upstream repository and fetch changes
     - name: Add Upstream Repository
       run: |
         if ! git remote | grep -q upstream; then
@@ -34,18 +31,16 @@ jobs:
         fi
         git fetch upstream
 
-    # Create a new branch and merge changes from upstream
     - name: Create Branch for Upstream Changes
       run: |
-        git checkout -B update-from-upstream
-        git merge upstream/main --no-edit --allow-unrelated-histories --strategy=recursive --strategy-option=theirs || echo "Merge conflict handled or no changes."
+        git checkout -B update-from-upstream upstream/main
+        git merge main --no-edit --allow-unrelated-histories --strategy=recursive --strategy-option=theirs || echo "Merge conflict handled or no changes."
 
         if git diff --quiet; then
           echo "No changes detected. Exiting."
           exit 0
         fi
 
-    # Debug Git status to ensure everything is in place
     - name: Debug Git Status
       run: |
         git status
@@ -53,7 +48,6 @@ jobs:
         git remote -v
         git branch -vv
 
-    # Push the changes to the fork repository
     - name: Push Branch to Fork
       if: success()
       env:
@@ -61,7 +55,6 @@ jobs:
       run: |
         git push -u origin update-from-upstream || echo "No changes to push."
 
-    # Create a pull request if there are changes to merge
     - name: Create Pull Request
       if: success()
       uses: peter-evans/create-pull-request@v5
@@ -69,6 +62,8 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: "Sync changes from upstream"
         branch: update-from-upstream
-
-
- 
+        base: main
+        title: "Merge Updates from Upstream"
+        body: |
+          This pull request merges changes from the upstream repository into the fork.
+        labels: "sync"
