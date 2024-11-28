@@ -57,6 +57,15 @@ jobs:
           exit 0
         fi
 
+    - name: Attempt cherry-pick
+      run: |
+        git cherry-pick 4e1ee8f73b2fb1b6cb11ef418c243db3b8cc652d -m 1 || {
+          echo "Cherry-pick failed. Investigating..."; 
+          git status;
+          git log -n 5 --oneline;
+          exit 1;
+        }
+
     - name: Debug Git Status
       run: |
         git status
@@ -72,7 +81,6 @@ jobs:
         git push -u origin update-from-upstream || echo "No changes to push."
 
     - name: Create Pull Request
-      if: success()
       uses: peter-evans/create-pull-request@v5
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
@@ -83,4 +91,11 @@ jobs:
         body: |
           This pull request merges changes from the upstream repository into the fork.
         labels: "sync"
-
+        committer: GitHub <noreply@github.com>
+        author: 14vasudha <14vasudha@users.noreply.github.com>
+        signoff: false
+        delete-branch: false
+        draft: false
+         cherry-pick:
+          - commit: 4e1ee8f73b2fb1b6cb11ef418c243db3b8cc652d
+            options: "-m 1"
