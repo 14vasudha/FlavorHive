@@ -52,21 +52,4 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        git push -u origin update-from-upstream || echo "No changes to push."
-
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v7
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        commit-message: "Sync changes from upstream"
-        branch: update-from-upstream
-        base: main
-        title: "Merge Updates from Upstream"
-        body: |
-          This pull request merges changes from the upstream repository into the fork.
-        labels: "sync"
-        committer: GitHub <noreply@github.com>
-        author: 14vasudha <14vasudha@users.noreply.github.com>
-        signoff: false
-        delete-branch: false
-        draft: false
+        git push --set-upstream origin update-from-upstream || echo "No changes to push."
