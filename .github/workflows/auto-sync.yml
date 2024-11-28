@@ -34,8 +34,8 @@ jobs:
     - name: Create Branch for Upstream Changes
       run: |
         git fetch upstream
-        git checkout -B update-from-upstream upstream/main
-        git merge origin/main --no-edit --allow-unrelated-histories || {
+        git checkout -B update-from-upstream origin/main
+        git merge upstream/main --no-edit --allow-unrelated-histories || {
           echo "Merge failed, attempting a reset.";
           git reset --hard upstream/main
         }
@@ -68,5 +68,5 @@ jobs:
         committer: GitHub <noreply@github.com>
         author: 14vasudha <14vasudha@users.noreply.github.com>
         signoff: false
-        delete-branch: false
+        delete-branch: true
         draft: false
