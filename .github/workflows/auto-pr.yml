@@ -1,0 +1,51 @@
+name: Sync Upstream
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"  # Runs every 5 minutes (adjust as needed)
+  workflow_dispatch:  # Allows manual triggering
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up Git
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git remote add upstream https://github.com/Vishu-Organization/FlavorHive
+          git fetch upstream
+
+      - name: Check for updates and create PR
+        run: |
+          # Check if upstream changes exist
+          if [ "$(git rev-parse HEAD)" != "$(git rev-parse upstream/main)" ]; then
+              echo "Upstream changes detected. Preparing to create a PR..."
+              TIMESTAMP=$(date +%Y%m%d%H%M%S)
+              UPDATE_BRANCH="update-from-upstream-$TIMESTAMP"
+              
+              # Create and push the update branch
+              git checkout -b "$UPDATE_BRANCH"
+              git merge upstream/main --no-edit
+              git push origin "$UPDATE_BRANCH"
+
+              # Create a Pull Request
+              gh pr create --title "Sync from upstream" \
+                           --body "This PR syncs changes from the upstream repository." \
+                           --head "$UPDATE_BRANCH" \
+                           --base main
+          else
+              echo "No updates from upstream."
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
