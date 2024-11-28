@@ -33,24 +33,28 @@ jobs:
 
     - name: Create Branch for Upstream Changes
       run: |
-       # Reset the update-from-upstream branch based on upstream/main
-       git fetch upstream
-       git checkout -B update-from-upstream upstream/main
+        # Fetch latest upstream changes
+        git fetch upstream
 
-       # Perform the merge using 'theirs' strategy to resolve conflicts
-       git merge origin/main --no-edit --allow-unrelated-histories --strategy=recursive --strategy-option=theirs || echo "Handled merge conflicts."
+        # Create or reset the branch to track upstream/main
+        git checkout -B update-from-upstream upstream/main
 
-       # Commit the merge if needed
-       if [ -f .git/MERGE_HEAD ]; then
-       git commit --no-edit
-       fi
+        # Perform a merge with the fork's main branch
+        # Using the recursive strategy with the "theirs" option to resolve conflicts in favor of upstream
+        git merge origin/main --no-edit --allow-unrelated-histories --strategy=recursive --strategy-option=theirs || {
+          echo "Handled merge conflicts."
 
-       # Check if there are any changes that need to be pushed
-       if git diff --quiet; then
-       echo "No changes detected. Exiting."
-       exit 0
-       fi
+         # If merge still fails due to cherry-pick internally, abort the operation and hard reset to upstream/main
+          git merge --abort || true
+          git reset --hard upstream/main
+        }
 
+        # Check if any changes occurred after the merge
+        if git diff --quiet; then
+         echo "No changes detected. Exiting."
+          exit 0
+        fi
+        
     - name: Debug Git Status
       run: |
         git status
