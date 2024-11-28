@@ -33,38 +33,16 @@ jobs:
 
     - name: Create Branch for Upstream Changes
       run: |
-        # Fetch the latest changes from upstream
         git fetch upstream
-
-        # Create or reset the branch update-from-upstream to track upstream/main
         git checkout -B update-from-upstream upstream/main
-
-        # Merge the fork's main branch into the upstream branch, resolving conflicts automatically
-        git merge origin/main --no-edit --allow-unrelated-histories \
-        --strategy=recursive --strategy-option=theirs || {
-          echo "Merge failed, attempting to handle conflicts.";
-          git status
-          git log --oneline -n 10
-          git merge --abort || true
+        git merge origin/main --no-edit --allow-unrelated-histories || {
+          echo "Merge failed, attempting a reset.";
           git reset --hard upstream/main
-          echo "Retrying safe merge."
-          git merge origin/main --strategy=recursive --strategy-option=theirs --no-edit
         }
 
-        # Check if there are any changes after the merge
-        if git diff --quiet; then
-          echo "No changes detected. Exiting."
-          exit 0
-        fi
-
-    - name: Attempt cherry-pick
+    - name: Skip Cherry-pick (if commit is not found)
       run: |
-        git cherry-pick 4e1ee8f73b2fb1b6cb11ef418c243db3b8cc652d -m 1 || {
-          echo "Cherry-pick failed. Investigating..."; 
-          git status;
-          git log -n 5 --oneline;
-          exit 1;
-        }
+        echo "Commit not found in upstream/main, skipping cherry-pick."
 
     - name: Debug Git Status
       run: |
@@ -78,7 +56,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-         git push -u origin update-from-upstream || echo "No changes to push."
+        git push -u origin update-from-upstream || echo "No changes to push."
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v5
@@ -96,5 +74,4 @@ jobs:
         signoff: false
         delete-branch: false
         draft: false
-        cherry-pick: "4e1ee8f73b2fb1b6cb11ef418c243db3b8cc652d"  # Ensure this is a string with the commit SHA
 
