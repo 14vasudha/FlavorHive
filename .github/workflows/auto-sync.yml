@@ -2,7 +2,7 @@ name: Auto-Sync Fork
 
 on:
   schedule:
-    - cron: "*/20 * * * *"  # Every 20 minutes (adjust as needed)
+    - cron: "*/5 * * * *"  # Every 5 minutes (adjust as needed)
   workflow_dispatch:  # Allows manual triggering
 
 permissions:
@@ -59,7 +59,8 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: "Sync changes from upstream"
-        branch: update-from-upstream
+        branch: main
+        base: update-from-upstream
         title: "Merge Updates from Upstream"
         body: |
           This pull request merges changes from the upstream repository into the fork.
