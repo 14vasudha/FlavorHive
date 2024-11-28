@@ -2,7 +2,7 @@ name: Auto-Sync Fork
 
 on:
   schedule:
-    - cron: "*/5 * * * *"  # Every 5 minutes (adjust as needed)
+    - cron: "*/20 * * * *"  # Every 20 minutes (adjust as needed)
   workflow_dispatch:  # Allows manual triggering
 
 permissions:
