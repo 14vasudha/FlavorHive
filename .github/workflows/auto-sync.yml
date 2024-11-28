@@ -2,7 +2,7 @@ name: Auto-Sync Fork
 
 on:
   schedule:
-    - cron: "*/5 * * * *"  # Every 5 minutes (adjust as needed) 
+    - cron: "*/5 * * * *"  # Every 5 minutes (adjust as needed)
   workflow_dispatch:  # Allows manual triggering
 
 permissions:
@@ -33,10 +33,10 @@ jobs:
 
     - name: Create Branch for Upstream Changes
       run: |
-        # Fetch the latest changes from the upstream
+        # Fetch the latest changes from upstream
         git fetch upstream
 
-        # Create or reset the branch update-from-upstream to match upstream/main
+        # Create or reset the branch update-from-upstream to track upstream/main
         git checkout -B update-from-upstream upstream/main
 
         # Merge the fork's main branch into the upstream branch, resolving conflicts automatically
@@ -83,3 +83,4 @@ jobs:
         body: |
           This pull request merges changes from the upstream repository into the fork.
         labels: "sync"
+
