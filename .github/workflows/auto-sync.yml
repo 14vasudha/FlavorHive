@@ -77,8 +77,8 @@ jobs:
       if: success()
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        git push -u origin update-from-upstream || echo "No changes to push."
+        run: |
+         git push -u origin update-from-upstream || echo "No changes to push."
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v5
@@ -96,6 +96,4 @@ jobs:
         signoff: false
         delete-branch: false
         draft: false
-         cherry-pick:
-          - commit: 4e1ee8f73b2fb1b6cb11ef418c243db3b8cc652d
-            options: "-m 1"
+        cherry-pick: "4e1ee8f73b2fb1b6cb11ef418c243db3b8cc652d"
