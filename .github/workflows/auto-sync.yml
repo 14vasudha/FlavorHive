@@ -96,4 +96,5 @@ jobs:
         signoff: false
         delete-branch: false
         draft: false
-        cherry-pick: "4e1ee8f73b2fb1b6cb11ef418c243db3b8cc652d"
+        cherry-pick: "4e1ee8f73b2fb1b6cb11ef418c243db3b8cc652d"  # Ensure this is a string with the commit SHA
+
