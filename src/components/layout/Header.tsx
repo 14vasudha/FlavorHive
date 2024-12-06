@@ -81,7 +81,7 @@ const Header = () => {
             blog
           </Link>
         </div>
-        <div className="col-span-1 justify-self-end md:col-auto">
+        <div className="col-span-1 flex items-center justify-self-end md:col-auto">
           {session?.user.user_metadata.name || session?.user.email ? (
             <span
               data-testid="text-welcome"
