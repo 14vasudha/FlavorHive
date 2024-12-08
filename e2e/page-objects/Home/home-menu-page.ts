@@ -1,4 +1,5 @@
 import { Page, expect } from "@playwright/test";
+import { homePageMenuApiMockResponse } from "../../load-constants";
 
 export class HomeMenuPage {
   constructor(private page: Page) {
@@ -73,10 +74,21 @@ export class HomeMenuPage {
     await expect(this.mediterraneanLink).toBeVisible();
     await this.mediterraneanLink.click();
     expect(this.page.url()).toContain(`on-the-menu?cuisineType=mediterranean`);
-    await this.page.goBack();
+    await this.page.goBack({ waitUntil: "commit" });
+    await this.interceptRecipeMenuApi();
     await expect(this.starterLink).toBeVisible();
     await this.starterLink.click();
     expect(this.page.url()).toContain(`on-the-menu?cuisineType=starter`);
-    await this.page.goBack();
+    await this.page.goBack({ waitUntil: "commit" });
+    await this.interceptRecipeMenuApi();
+  }
+
+  async interceptRecipeMenuApi() {
+    await this.page.route(`**/api/recipes/v2**`, async (route) => {
+      route.fulfill({
+        status: 200,
+        body: JSON.stringify(homePageMenuApiMockResponse),
+      });
+    });
   }
 }
