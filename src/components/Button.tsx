@@ -1,4 +1,4 @@
-import { ComponentProps } from "react";
+import { ComponentProps, forwardRef } from "react";
 import { VariantProps, cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
@@ -73,19 +73,18 @@ export const buttonStyles = cva(
 
 type ButtonProps = VariantProps<typeof buttonStyles> & ComponentProps<"button">;
 
-const Button = ({
-  variant,
-  size,
-  display,
-  className,
-  ...props
-}: ButtonProps) => {
-  return (
-    <button
-      {...props}
-      className={twMerge(buttonStyles({ variant, size, display }), className)}
-    ></button>
-  );
-};
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ variant, size, display, className, ...props }: ButtonProps, ref) => {
+    return (
+      <button
+        ref={ref}
+        {...props}
+        className={twMerge(buttonStyles({ variant, size, display }), className)}
+      >
+        {props.children}
+      </button>
+    );
+  },
+);
 
 export default Button;
