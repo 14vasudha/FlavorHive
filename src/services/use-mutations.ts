@@ -9,6 +9,7 @@ import {
 } from "./api";
 import { toast } from "react-toastify";
 import { User } from "../types/types";
+import { getOnTheMenuData } from "./edamam-api";
 
 export const useSignUpWithPassword = () => {
   return useMutation({
@@ -59,5 +60,14 @@ export const useInsertNewsLetterSubscriber = () => {
     onError: (error) => toast.error(error.message),
     onSuccess: () =>
       toast.success("Successfully added the email to subscribers list"),
+  });
+};
+
+export const useGetOnTheMenuData = () => {
+  return useMutation({
+    mutationKey: ["on the menu"],
+    mutationFn: (filters: any) => getOnTheMenuData(filters),
+    onError: (error) => toast.error(error.message),
+    onSuccess: () => toast.success("Menu updated with filters"),
   });
 };

@@ -167,3 +167,50 @@ export const insertNewsLetterSubscriber = async (email: string) => {
   return data;
 };
 
+export const getCuisineTypes = async () => {
+  const { data: cuisineTypes } = await supabase
+    .schema("recipe_filter")
+    .from("cuisine_type")
+    .select("id, value")
+    .order("value");
+
+  return cuisineTypes;
+};
+export const getDietTypes = async () => {
+  const { data: dietTypes } = await supabase
+    .schema("recipe_filter")
+    .from("diet_labels")
+    .select("id, value, label, description")
+    .order("value");
+
+  return dietTypes;
+};
+export const getDishTypes = async () => {
+  const { data: dishTypes } = await supabase
+    .schema("recipe_filter")
+    .from("dish_type")
+    .select("id, value, label")
+    .order("value");
+
+  return dishTypes;
+};
+
+export const getHealthLabels = async () => {
+  const { data: healthLabels } = await supabase
+    .schema("recipe_filter")
+    .from("health_labels")
+    .select("id, value, label, description")
+    .order("value");
+
+  return healthLabels;
+};
+export const getMealTypes = async () => {
+  const { data: mealTypes } = await supabase
+    .schema("recipe_filter")
+    .from("meal_type")
+    .select("id, value, label")
+    .order("value");
+
+  return mealTypes;
+};
+
