@@ -6,6 +6,15 @@ export default {
   darkMode: "class",
   theme: {
     extend: {
+      keyframes: {
+        rotateTick: {
+          "0%": { transform: "rotate(-90deg)", opacity: "0" },
+          "100%": { transform: "rotate(0deg)", opacity: "1" },
+        },
+      },
+      animation: {
+        rotateTick: "rotateTick 0.3s ease-in-out",
+      },
       gridTemplateColumns: {
         "custom-10": "repeat(10,198px)",
       },
