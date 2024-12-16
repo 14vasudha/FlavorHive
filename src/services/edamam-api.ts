@@ -1,50 +1,20 @@
-import axios from "axios";
-import { HomeMenu, HomeMenuSelector, Recipe } from "../types/home";
+import axios, { AxiosResponse } from "axios";
+import {
+  HomeMenu,
+  HomeMenuSelector,
+  Recipe,
+  RecipeHit,
+  RecipeResponse,
+} from "../types/home";
+import { buildUrl } from "./helper-functions";
+import { homeRecipeFields } from "../types/types";
 
-type SelectorMap = {
-  fields: string[];
-  mealType?: string;
-  cuisineType?: string;
-  health?: string;
-  dishType?: string;
-  diet?: string;
-};
+const getHits = (response: AxiosResponse<RecipeResponse>): RecipeHit[] =>
+  response?.data?.hits;
 
-const appId = "7f563e49";
-const appKeys = [
-  "4be7f47dd4dc6fd6ed0b7644e352f6aa",
-  "7bbf70c600c349da70d8d807a2949f29",
-];
-
-const homeRecipeFields = ["label", "image", "images"];
-
-const getBaseUrl = () =>
-  `https://api.edamam.com/api/recipes/v2?type=public&app_id=${appId}&app_key=${appKeys[Math.floor(Math.random() * appKeys.length)]}`;
-
-const buildUrl = (selectorMap: SelectorMap) => {
-  const selectors = Object.entries(selectorMap)
-    .map(([key, value]) => {
-      if (key !== "fields") {
-        return `&${key}=${value}`;
-      }
-    })
-    .join("");
-
-  return `${getBaseUrl()}${appendFields(selectorMap.fields)}${selectors}`;
-};
-
-const appendFields = (fields: string[]) => {
-  const urlPart = fields.map((field) => {
-    return `&field=${field}`;
-  });
-  return urlPart.join("");
-};
-
-const getRecipe = async (url: string): Promise<Recipe> => {
+const getHomeRecipe = async (url: string): Promise<Recipe> => {
   try {
-    const {
-      data: { hits },
-    } = await axios.get(url);
+    const hits = getHits(await axios.get(url));
     const [{ recipe }] = hits;
     return recipe;
   } catch (error) {
@@ -52,54 +22,101 @@ const getRecipe = async (url: string): Promise<Recipe> => {
   }
 };
 
+const getRecipes = async (url: string): Promise<RecipeResponse> => {
+  try {
+    return (await axios.get(url)).data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+/**
+ * This function is used to get the Menus to be displayed on the Home Screen.
+ * Selector is used to filter the recipes on the 'on the menu' screen.
+ * @returns Promise<HomeMenu>
+ */
 export const getHomeMenu = async (): Promise<HomeMenu> => {
   try {
     const fields = homeRecipeFields;
     return {
       mediterranean: {
-        recipe: await getRecipe(
-          buildUrl({ fields, cuisineType: "mediterranean" }),
+        recipe: await getHomeRecipe(
+          buildUrl({ fields, cuisineType: ["mediterranean"] }),
         ),
-        selector: HomeMenuSelector.cuisineType,
+        selector: HomeMenuSelector.cuisine,
       },
       breakFast: {
-        recipe: await getRecipe(buildUrl({ fields, mealType: "breakfast" })),
-        selector: HomeMenuSelector.mealType,
+        recipe: await getHomeRecipe(
+          buildUrl({ fields, mealType: ["breakfast"] }),
+        ),
+        selector: HomeMenuSelector.meal,
       },
       vegetarian: {
-        recipe: await getRecipe(buildUrl({ fields, health: "vegetarian" })),
+        recipe: await getHomeRecipe(
+          buildUrl({ fields, health: ["vegetarian"] }),
+        ),
         selector: HomeMenuSelector.health,
       },
       french: {
-        recipe: await getRecipe(buildUrl({ fields, cuisineType: "french" })),
-        selector: HomeMenuSelector.cuisineType,
+        recipe: await getHomeRecipe(
+          buildUrl({ fields, cuisineType: ["french"] }),
+        ),
+        selector: HomeMenuSelector.cuisine,
       },
       indian: {
-        recipe: await getRecipe(buildUrl({ fields, cuisineType: "indian" })),
-        selector: HomeMenuSelector.cuisineType,
+        recipe: await getHomeRecipe(
+          buildUrl({ fields, cuisineType: ["indian"] }),
+        ),
+        selector: HomeMenuSelector.cuisine,
       },
       starter: {
-        recipe: await getRecipe(buildUrl({ fields, dishType: "starter" })),
-        selector: HomeMenuSelector.dishType,
+        recipe: await getHomeRecipe(
+          buildUrl({ fields, dishType: ["starter"] }),
+        ),
+        selector: HomeMenuSelector.dish,
       },
       snack: {
-        recipe: await getRecipe(buildUrl({ fields, mealType: "snack" })),
-        selector: HomeMenuSelector.mealType,
+        recipe: await getHomeRecipe(buildUrl({ fields, mealType: ["snack"] })),
+        selector: HomeMenuSelector.meal,
       },
       mexican: {
-        recipe: await getRecipe(buildUrl({ fields, cuisineType: "mexican" })),
-        selector: HomeMenuSelector.cuisineType,
+        recipe: await getHomeRecipe(
+          buildUrl({ fields, cuisineType: ["mexican"] }),
+        ),
+        selector: HomeMenuSelector.cuisine,
       },
       pancake: {
-        recipe: await getRecipe(buildUrl({ fields, dishType: "pancake" })),
-        selector: HomeMenuSelector.dishType,
+        recipe: await getHomeRecipe(
+          buildUrl({ fields, dishType: ["pancake"] }),
+        ),
+        selector: HomeMenuSelector.dish,
       },
       salad: {
-        recipe: await getRecipe(buildUrl({ fields, dishType: "salad" })),
-        selector: HomeMenuSelector.dishType,
+        recipe: await getHomeRecipe(buildUrl({ fields, dishType: ["salad"] })),
+        selector: HomeMenuSelector.dish,
       },
     };
   } catch (error) {
     throw error;
+  }
+};
+
+export const getOnTheMenuData = async ({
+  pageParam,
+}: {
+  pageParam: string;
+}): Promise<RecipeResponse> => {
+  try {
+    return getRecipes(pageParam);
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      if (error.status === 401) {
+        throw new Error("You don't have acces to this feature");
+      } else {
+        throw new Error("Something went wrong");
+      }
+    } else {
+      throw error;
+    }
   }
 };
