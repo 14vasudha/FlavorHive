@@ -150,8 +150,8 @@ const WhatsCooking = () => {
           data-testid="info-offers"
           className="mt-4 align-baseline text-sm font-normal leading-relaxed text-header-primary md:mt-0"
         >
-          Sign up for offers, recipes, news, & more (subscribers to the Blue
-          Apron recipe newsletter agree to our Privacy Policy)
+          Sign up for offers, recipes, news, & more (subscribers to the
+          FlavorHive recipe newsletter agree to our Privacy Policy)
         </aside>
       </div>
       <div
