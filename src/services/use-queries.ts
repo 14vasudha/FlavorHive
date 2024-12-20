@@ -1,9 +1,19 @@
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import {
+  keepPreviousData,
+  useInfiniteQuery,
+  useQuery,
+} from "@tanstack/react-query";
 import {
   getAllCustomerSupportLinks,
   getAllDiscountedPeopleLinks,
+  getCuisineTypes,
+  getDietTypes,
+  getDishTypes,
+  getFoodBlogs,
+  getHealthLabels,
   getHowItWorks,
   getLegalLinks,
+  getMealTypes,
   getMealsShippedData,
   getOurVisionScreenDetails,
   getProductsLinks,
@@ -12,9 +22,13 @@ import {
   getTestimonials,
 } from "./api";
 import { queryClient } from "../App";
-import { getHomeMenu } from "./edamam-api";
+import { getHomeMenu, getOnTheMenuData } from "./edamam-api";
+import { Filters } from "../types/on-the-menu/on-the-menu-filter";
+import { buildUrl } from "./helper-functions";
+import { homeRecipeFields } from "../types/types";
 
-const homeScreenStaleTime = 300000; // 5 minutes. Data wouldn't change that quickly
+const staticDataStaleTime = 300000; // 5 minutes. Data wouldn't change that quickly
+// const staticDataStaleTime = 20 * 60000; // 20 minutes. Data wouldn't change that quickly
 
 export const useGetAllCustomerSupportLinks = () => {
   return useQuery({
@@ -72,7 +86,7 @@ const useGetTestimonials = async () => {
     queryKey: ["testimonials"],
     queryFn: getTestimonials,
     revalidateIfStale: true,
-    staleTime: homeScreenStaleTime,
+    staleTime: staticDataStaleTime,
   });
 };
 
@@ -81,7 +95,7 @@ const useGetMealsShipped = async () => {
     queryKey: ["meals shipped"],
     queryFn: getMealsShippedData,
     revalidateIfStale: true,
-    staleTime: homeScreenStaleTime,
+    staleTime: staticDataStaleTime,
   });
 };
 
@@ -106,7 +120,7 @@ export const useGetHomeMenu = () => {
     queryKey: ["home menu"],
     queryFn: getHomeMenu,
     refetchOnWindowFocus: true,
-    staleTime: homeScreenStaleTime,
+    staleTime: staticDataStaleTime,
     retry: false,
     placeholderData: keepPreviousData,
   });
@@ -121,3 +135,75 @@ export const getSignupData = async () => ({
   howItWorks: await useGetHowItWorks(),
   additionalInfo: await useGetSignupAdditionalInfo(),
 });
+
+export const useGetCuisineTypes = () => {
+  return useQuery({
+    queryKey: ["cuisine types"],
+    queryFn: getCuisineTypes,
+    staleTime: staticDataStaleTime,
+  });
+};
+export const useGetDietTypes = () => {
+  return useQuery({
+    queryKey: ["Diet types"],
+    queryFn: getDietTypes,
+    staleTime: staticDataStaleTime,
+  });
+};
+export const useGetDishTypes = () => {
+  return useQuery({
+    queryKey: ["Dish types"],
+    queryFn: getDishTypes,
+    staleTime: staticDataStaleTime,
+  });
+};
+export const useGetHealthLabels = () => {
+  return useQuery({
+    queryKey: ["Health labels"],
+    queryFn: getHealthLabels,
+    staleTime: staticDataStaleTime,
+  });
+};
+export const useGetMealTypes = () => {
+  return useQuery({
+    queryKey: ["Meal types"],
+    queryFn: getMealTypes,
+    staleTime: staticDataStaleTime,
+  });
+};
+
+export const useGetFoodBlogs = (top: number, isHomeScreen = true) => {
+  return useQuery({
+    queryKey: ["food blogs", isHomeScreen],
+    queryFn: () => getFoodBlogs(top),
+    staleTime: staticDataStaleTime,
+  });
+};
+
+export const useGetOnTheMenuData = (filters: Filters) => {
+  filters = {
+    ...filters,
+    time: ["14-60"],
+  };
+
+  const fields = [
+    ...homeRecipeFields,
+    "source",
+    "url",
+    "healthLabels",
+    "ingredientLines",
+    "calories",
+    "totalTime",
+    "dietLabels",
+  ];
+
+  return useInfiniteQuery({
+    queryKey: ["on the menu", filters],
+    queryFn: ({ pageParam }) => {
+      return getOnTheMenuData({ pageParam });
+    },
+    initialPageParam: buildUrl({ fields, ...filters }),
+    placeholderData: keepPreviousData,
+    getNextPageParam: (lastPage, _) => lastPage._links?.next?.href || undefined,
+  });
+};
