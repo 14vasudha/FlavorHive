@@ -27,6 +27,6 @@ const Home = () => {
 
 export default Home;
 
-export const Route = createLazyRoute("/pages/vision")({
+export const Route = createLazyRoute("/")({
   component: Home,
 });
