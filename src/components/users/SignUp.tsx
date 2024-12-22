@@ -218,6 +218,7 @@ const SignUp = () => {
                         data-testid="btn-submit"
                         size="full"
                         variant="default"
+                        rounded="triplexl"
                       >
                         {isContinue ? "Sign Up" : "Continue"}
                       </Button>
@@ -229,6 +230,7 @@ const SignUp = () => {
                         size="full"
                         display="flex"
                         variant="apple"
+                        rounded="triplexl"
                         className="text-sm normal-case"
                         onClick={onSignInWithApple}
                       >
@@ -239,6 +241,7 @@ const SignUp = () => {
                         size="full"
                         display="flex"
                         variant="google"
+                        rounded="triplexl"
                         onClick={onSignUpWithGoogle}
                       >
                         <GoogleIcon />
