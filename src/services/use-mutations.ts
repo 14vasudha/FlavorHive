@@ -10,6 +10,7 @@ import {
 import { toast } from "react-toastify";
 import { User } from "../types/types";
 
+
 export const useSignUpWithPassword = () => {
   return useMutation({
     mutationKey: ["signUp", "password"],
@@ -61,3 +62,4 @@ export const useInsertNewsLetterSubscriber = () => {
       toast.success("Successfully added the email to subscribers list"),
   });
 };
+
