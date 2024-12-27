@@ -12,7 +12,7 @@ const MealsShipped = () => {
       >
         530+ million meals shipped
       </span>
-      <p className="text-black20 max-w-80 text-center text-lg lg:max-w-96 lg:text-xl">
+      <p className="max-w-80 text-center text-lg text-black20 lg:max-w-96 lg:text-xl">
         See why home cooks stick with the original American meal kit.
       </p>
       <div className="mx-2 grid gap-8 md:grid-cols-3 md:gap-0">
@@ -62,12 +62,16 @@ const MealsShipped = () => {
         Get started for as little as{" "}
         <span
           data-testid="text-home-meal-shipped-price-per-serving"
-          className="text-black20 font-bold"
+          className="font-bold text-black20"
         >
           $7.99 per serving
         </span>
       </p>
-      <Button data-testid="btn-home-meal-shipped-see-plans" className="py-3">
+      <Button
+        data-testid="btn-home-meal-shipped-see-plans"
+        rounded="triplexl"
+        className="w-40 py-3"
+      >
         See Plans
       </Button>
     </section>
