@@ -1,4 +1,5 @@
 import { Page, expect } from "@playwright/test";
+import { homePageMenuApiMockResponse } from "../load-constants";
 
 export class RootPage {
   rootRoute: string;
@@ -14,6 +15,12 @@ export class RootPage {
 
   async gotoRootRoute() {
     await this.page.goto(this.rootRoute);
+    await this.page.route(`**/api/recipes/v2**`, async (route) => {
+      route.fulfill({
+        status: 200,
+        body: JSON.stringify(homePageMenuApiMockResponse),
+      });
+    });
   }
 
   async verifyPageTitile() {
