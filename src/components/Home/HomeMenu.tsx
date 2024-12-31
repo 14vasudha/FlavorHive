@@ -4,19 +4,14 @@ import Loader from "../layout/Loader";
 import { toast } from "react-toastify";
 
 const HomeMenu = () => {
-  const { data: homeMenu, isPending, isError } = useGetHomeMenu();
+  const { data: homeMenu, isPending, isError, error } = useGetHomeMenu();
 
   const loadRecipes = () => {
     if (isPending) {
       return <Loader />;
     } else if (isError) {
       toast.error("Failed to fetch Recipes");
-      return (
-        <p className="m-10">
-          We failed to fetch the recipes. Please reload or navigate to the menu
-          screen.
-        </p>
-      );
+      return <p className="m-10">{error.message}</p>;
     } else {
       return (
         <ul className="grid max-w-full grid-cols-custom-10 gap-x-4 gap-y-10 overflow-x-auto px-4 py-8 lg:grid-cols-5 lg:gap-x-6 xl:gap-x-8 xl:px-10">
