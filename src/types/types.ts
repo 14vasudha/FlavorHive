@@ -14,3 +14,5 @@ export type User = {
   email: string;
   password: string;
 };
+
+export const homeRecipeFields = ["label", "image", "images"];
