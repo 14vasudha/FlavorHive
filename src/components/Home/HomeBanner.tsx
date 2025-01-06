@@ -37,6 +37,7 @@ const HomeBanner = () => {
         <Button
           type="button"
           variant="white"
+          rounded="triplexl"
           data-testid="btn-home-banner-see-plans"
         >
           See Plans
