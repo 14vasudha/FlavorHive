@@ -1,4 +1,8 @@
-import { OnTheMenuFilterOption } from "../types/on-the-menu/on-the-menu-filter";
+import { RecipeHit } from "../types/home";
+import {
+  Filters,
+  OnTheMenuFilterOption,
+} from "../types/on-the-menu/on-the-menu-filter";
 
 type SelectorMap = {
   fields: string[];
@@ -78,4 +82,55 @@ export const isVeganVegetarion = (labels: string[]) =>
 export const getMatchingLabels = (labels: string[]) => {
   const labelSet = new Set(labels);
   return labelsForFiltering.filter((label) => labelSet.has(label));
+};
+
+export const paramsSerializerFn = (
+  params: Record<string, any>,
+  fields: string[],
+  filters?: Filters,
+) => {
+  // Serialize base params
+  const searchParams = new URLSearchParams(params);
+
+  // Append fields dynamically
+  fields.forEach((field) => searchParams.append("field", field));
+
+  // Iterate through each key-value pair
+  if (filters) {
+    Object.entries(filters).forEach(([key, values]) => {
+      values.forEach((value) => {
+        searchParams.append(key, value); // Append key-value pairs
+      });
+    });
+  }
+
+  // Return the final query string
+  return searchParams.toString();
+};
+
+export const extractRecipeId = (url: string): string => {
+  const regex = /\/api\/recipes\/v2\/([^?]+)/;
+  const match = url.match(regex);
+  return match ? match[1] : "";
+};
+
+export const getRandomRecipes = (
+  recipes: RecipeHit[],
+  count: number,
+  recipeId: string,
+): RecipeHit[] => {
+  const shuffled = [
+    ...recipes.filter((recipe) => {
+      const id = extractRecipeId(recipe._links.self.href);
+      return id !== recipeId;
+    }),
+  ]; // Create a shallow copy to avoid modifying the original array
+
+  // Shuffle using Fisher-Yates Algorithm
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // Swap elements
+  }
+
+  return shuffled.slice(0, count); // Return the first 'count' elements
 };

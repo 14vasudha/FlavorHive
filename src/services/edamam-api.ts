@@ -6,8 +6,15 @@ import {
   RecipeHit,
   RecipeResponse,
 } from "../types/home";
-import { appId, appKeys, buildUrl } from "./helper-functions";
-import { homeRecipeFields } from "../types/types";
+import {
+  appId,
+  appKeys,
+  buildUrl,
+  getRandomRecipes,
+  paramsSerializerFn,
+} from "./helper-functions";
+import { baseUrl, homeRecipeFields } from "../types/types";
+import { Filters } from "../types/on-the-menu/on-the-menu-filter";
 
 const getHits = (response: AxiosResponse<RecipeResponse>): RecipeHit[] =>
   response?.data?.hits;
@@ -136,28 +143,54 @@ export const getRecipeDetailData = async (id: string): Promise<RecipeHit> => {
   ];
 
   try {
-    const { data } = await axios.get(
-      `https://api.edamam.com/api/recipes/v2/${id}`,
-      {
-        params: {
-          type: "public",
-          app_id: appId,
-          app_key: appKeys[Math.floor(Math.random() * appKeys.length)],
-        },
-        paramsSerializer: (params) => {
-          // Serialize base params
-          const searchParams = new URLSearchParams(params);
-
-          // Append fields dynamically
-          fields.forEach((field) => searchParams.append("field", field));
-
-          // Return the final query string
-          return searchParams.toString();
-        },
+    const { data } = await axios.get(`${baseUrl}/${id}`, {
+      params: {
+        type: "public",
+        app_id: appId,
+        app_key: appKeys[Math.floor(Math.random() * appKeys.length)],
       },
-    );
+      paramsSerializer: (params) => paramsSerializerFn(params, fields),
+    });
 
     return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getSimilarRecipes = async ({
+  filters,
+  count = 4,
+  recipeId,
+}: {
+  filters: Filters;
+  count?: number;
+  recipeId: string;
+}): Promise<RecipeHit[]> => {
+  const fields = [
+    ...homeRecipeFields,
+    "source",
+    "url",
+    "healthLabels",
+    "ingredientLines",
+    "calories",
+    "totalTime",
+    "dietLabels",
+    "yield",
+  ];
+
+  try {
+    const {
+      data: { hits },
+    } = await axios.get(baseUrl, {
+      params: {
+        type: "public",
+        app_id: appId,
+        app_key: appKeys[Math.floor(Math.random() * appKeys.length)],
+      },
+      paramsSerializer: (params) => paramsSerializerFn(params, fields, filters),
+    });
+    return getRandomRecipes(hits, count, recipeId);
   } catch (error) {
     throw error;
   }
