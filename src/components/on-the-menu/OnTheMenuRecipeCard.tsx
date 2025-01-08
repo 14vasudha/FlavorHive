@@ -3,6 +3,7 @@ import { RecipeHit } from "../../types/home";
 import TimeIcon from "../../assets/on-the-menu/time-icon.svg";
 import VegetarianIcon from "../../assets/on-the-menu/vegetarian.svg";
 import {
+  extractRecipeId,
   getMatchingLabels,
   isVeganVegetarion,
 } from "../../services/helper-functions";
@@ -31,11 +32,6 @@ const OnTheMenuRecipeCard = ({
   },
 }: RecipeCardProps) => {
   const matchingLabels = getMatchingLabels([...healthLabels, ...dietLabels]);
-  const extractRecipeId = (url: string): string => {
-    const regex = /\/api\/recipes\/v2\/([^?]+)/;
-    const match = url.match(regex);
-    return match ? match[1] : "";
-  };
   const recipeId = extractRecipeId(href);
 
   return (

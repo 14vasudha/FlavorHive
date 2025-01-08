@@ -26,6 +26,7 @@ import {
   getHomeMenu,
   getOnTheMenuData,
   getRecipeDetailData,
+  getSimilarRecipes,
 } from "./edamam-api";
 import { Filters } from "../types/on-the-menu/on-the-menu-filter";
 import { buildUrl } from "./helper-functions";
@@ -218,5 +219,19 @@ export const useGetRecipeDetailData = (id: string) => {
     queryFn: () => getRecipeDetailData(id),
     revalidateIfStale: true,
     staleTime: staticDataStaleTime,
+  });
+};
+
+export const useGetSimilarRecipes = (filters: Filters, recipeId: string) => {
+  filters = {
+    ...filters,
+    time: ["14-60"],
+  };
+
+  return useQuery({
+    queryKey: ["similar recipes", recipeId],
+    queryFn: () => getSimilarRecipes({ filters, recipeId }),
+    staleTime: staticDataStaleTime,
+    placeholderData: keepPreviousData,
   });
 };

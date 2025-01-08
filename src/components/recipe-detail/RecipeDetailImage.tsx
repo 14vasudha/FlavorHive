@@ -18,7 +18,7 @@ const RecipeDetailImage = ({
 }: RecipeDetailImageProps) => {
   const [isImageLoading, setIsImageLoading] = useState(true);
   return (
-    <article className="bg-white pb-4 lg:pb-0">
+    <article className="bg-white py-4 lg:py-0">
       <figure className="relative mx-auto w-8/12 overflow-hidden lg:w-11/12 lg:rounded-md">
         {isImageLoading && (
           <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
