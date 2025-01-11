@@ -51,6 +51,7 @@ const HomeHero = () => {
         </h2>
         <Button
           data-testid="btn-home-hero-see-plans"
+          rounded="triplexl"
           className="mx-auto mt-4 px-4 py-2 md:mx-0 xl:mt-5 xl:px-5 xl:py-3 2xl:mt-8 2xl:px-7 2xl:py-4"
         >
           See Plans
