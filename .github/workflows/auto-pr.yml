@@ -31,11 +31,18 @@ jobs:
           git checkout main
           git merge upstream/main -X theirs --allow-unrelated-histories  # Allow unrelated histories and automatically resolve conflicts by keeping upstream changes
 
+      - name: Check if there are changes to push
+        id: changes
+        run: |
+          git diff --exit-code || echo "Changes detected"
+
       - name: Push Changes to Your Repository
         run: git push origin main
+        if: steps.changes.outputs.result != 'No changes'
 
       - name: Create a Pull Request
         run: |
           gh pr create --base main --head main --title "Sync with upstream" --body "Automatically synced with upstream repo" --repo ${{ github.repository }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: steps.changes.outputs.result != 'No changes'
