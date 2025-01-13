@@ -1,63 +1,40 @@
-name: Sync Upstream
+name: Sync Upstream Repository
 
 on:
   schedule:
-    - cron: "*/2 * * * *"
-  workflow_dispatch:
-
-permissions:
-  contents: write
-  pull-requests: write
+    - cron: '*/2 * * * *' 
+  push:
+    branches:
+      - main  # You can replace this with your default branch name
 
 jobs:
   sync:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Install GitHub CLI
-        run: |
-          sudo apt update
-          sudo apt install gh -y
+      - name: Checkout the repository
+        uses: actions/checkout@v2
 
       - name: Set up Git
-        run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "actions@github.com"
-          if ! git remote | grep -q upstream; then
-              git remote add upstream https://github.com/Vishu-Organization/FlavorHive
-          fi
-          git fetch upstream
+        uses: actions/setup-git@v2
+        with:
+          git_user_name: 'github-actions'
+          git_user_email: 'github-actions@github.com'
 
-      - name: Check for updates and create PR
+      - name: Add Upstream Remote
+        run: git remote add upstream https://github.com/Vishu-Organization/FlavorHive.git
+
+      - name: Fetch Upstream Changes
+        run: git fetch upstream
+
+      - name: Merge Upstream Changes into your Branch
+        run: git checkout main && git merge upstream/main --allow-unrelated-histories
+
+      - name: Push Changes to Your Repository
+        run: git push origin main
+
+      - name: Create a Pull Request
         env:
-            GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "Current HEAD: $(git rev-parse HEAD)"
-          echo "Upstream HEAD: $(git rev-parse upstream/main)"
-          if [ "$(git rev-parse HEAD)" != "$(git rev-parse upstream/main)" ]; then
-              echo "Upstream changes detected. Preparing to create a PR..."
-              TIMESTAMP=$(date +%Y%m%d%H%M%S)
-              UPDATE_BRANCH="update-from-upstream-$TIMESTAMP"
-              
-              # Create and push the update branch
-              git checkout -b "$UPDATE_BRANCH"
-              git merge upstream/main --no-edit
-              git push origin "$UPDATE_BRANCH"
-
-              # Create a Pull Request using GitHub CLI (automatically authenticated)
-              gh pr create --title "Sync from upstream" \
-                           --body "This PR syncs changes from the upstream repository." \
-                           --head "$UPDATE_BRANCH" \
-                           --base main || echo "Failed to create PR."
-          else
-              echo "No updates from upstream."
-          fi
-
-      - name: Verify Remote Branch
-        run: |
-          git branch -r
+          gh pr create --base main --head your-branch --title "Sync with upstream" --body "Automatically synced with upstream repo"
