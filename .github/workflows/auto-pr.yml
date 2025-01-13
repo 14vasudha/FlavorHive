@@ -26,9 +26,11 @@ jobs:
       - name: Fetch Upstream Changes
         run: git fetch upstream
 
-      - name: Merge Upstream Changes into your Branch
-        run: git checkout main && git merge upstream/main --allow-unrelated-histories
-
+      - name: Merge Upstream Changes into your Branch (with automatic conflict resolution)
+        run: |
+          git checkout main
+          git merge upstream/main -X theirs  # Automatically resolve conflicts by keeping upstream changes
+          
       - name: Push Changes to Your Repository
         run: git push origin main
 
@@ -36,5 +38,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr create --base main --head your-branch --title "Sync with upstream" --body "Automatically synced with upstream repo"
+          gh pr create --base main --head main --title "Sync with upstream" --body "Automatically synced with upstream repo"
 
