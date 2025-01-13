@@ -2,10 +2,10 @@ name: Sync Upstream Repository
 
 on:
   schedule:
-    - cron: '*/2 * * * *' 
+    - cron: '*/2 * * * *'  # Runs every 5 minutes
   push:
     branches:
-      - main  # You can replace this with your default branch name
+      - main  # Replace with your branch if it's different
 
 jobs:
   sync:
@@ -16,10 +16,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Git
-        uses: actions/setup-git@v2
-        with:
-          git_user_name: 'github-actions'
-          git_user_email: 'github-actions@github.com'
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
 
       - name: Add Upstream Remote
         run: git remote add upstream https://github.com/Vishu-Organization/FlavorHive.git
@@ -38,3 +37,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh pr create --base main --head your-branch --title "Sync with upstream" --body "Automatically synced with upstream repo"
+
