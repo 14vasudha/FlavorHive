@@ -14,3 +14,7 @@ export type User = {
   email: string;
   password: string;
 };
+
+export const homeRecipeFields = ["label", "image", "images"];
+
+export const baseUrl = `https://api.edamam.com/api/recipes/v2`;
