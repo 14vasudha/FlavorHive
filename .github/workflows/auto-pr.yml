@@ -35,7 +35,7 @@ jobs:
 
       - name: Check for updates and create PR
         env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           echo "Current HEAD: $(git rev-parse HEAD)"
           echo "Upstream HEAD: $(git rev-parse upstream/main)"
@@ -49,8 +49,7 @@ jobs:
               git merge upstream/main --no-edit
               git push origin "$UPDATE_BRANCH"
 
-              # Authenticate and create a Pull Request
-              echo "${{ secrets.PERSONAL_ACCESS_TOKEN }}" | gh auth login --with-token
+              # Create a Pull Request using GitHub CLI (automatically authenticated)
               gh pr create --title "Sync from upstream" \
                            --body "This PR syncs changes from the upstream repository." \
                            --head "$UPDATE_BRANCH" \
