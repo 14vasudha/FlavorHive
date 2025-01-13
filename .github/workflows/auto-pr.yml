@@ -35,28 +35,29 @@ jobs:
 
       - name: Check for updates and create PR
         env:
-            GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "Current HEAD: $(git rev-parse HEAD)"
-          echo "Upstream HEAD: $(git rev-parse upstream/main)"
-          if [ "$(git rev-parse HEAD)" != "$(git rev-parse upstream/main)" ]; then
-              echo "Upstream changes detected. Preparing to create a PR..."
-              TIMESTAMP=$(date +%Y%m%d%H%M%S)
-              UPDATE_BRANCH="update-from-upstream-$TIMESTAMP"
-              
-              # Create and push the update branch
-              git checkout -b "$UPDATE_BRANCH"
-              git merge upstream/main --no-edit
-              git push origin "$UPDATE_BRANCH"
-
-              # Create a Pull Request using GitHub CLI (automatically authenticated)
-              gh pr create --title "Sync from upstream" \
-                           --body "This PR syncs changes from the upstream repository." \
-                           --head "$UPDATE_BRANCH" \
-                           --base main || echo "Failed to create PR."
-          else
-              echo "No updates from upstream."
-          fi
+         echo "Current HEAD: $(git rev-parse HEAD)"
+         echo "Upstream HEAD: $(git rev-parse upstream/main)"
+            if [ "$(git rev-parse HEAD)" != "$(git rev-parse upstream/main)" ]; then
+            echo "Upstream changes detected. Preparing to create a PR..."
+            TIMESTAMP=$(date +%Y%m%d%H%M%S)
+             UPDATE_BRANCH="update-from-upstream-$TIMESTAMP"
+        
+          # Create and push the update branch
+          git checkout -b "$UPDATE_BRANCH"
+          git merge upstream/main --no-edit || { echo "Merge failed due to conflicts"; exit 1; }
+          git push origin "$UPDATE_BRANCH"
+        
+         # Create a Pull Request using GitHub CLI (automatically authenticated)
+         echo "Running gh pr create..."
+         gh pr create --title "Sync from upstream" \
+                     --body "This PR syncs changes from the upstream repository." \
+                     --head "$UPDATE_BRANCH" \
+                     --base main || echo "Failed to create PR."
+         else
+          echo "No updates from upstream."
+         fi
 
       - name: Verify Remote Branch
         run: |
