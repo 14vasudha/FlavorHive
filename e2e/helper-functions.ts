@@ -26,7 +26,8 @@ export const verifyWhatsCookingPage = async (
   browserName: "chromium" | "webkit" | "firefox",
 ) => {
   await whatsCookingPage.verifyInfoText(width);
-  await whatsCookingPage.verifyLinks();
+  await whatsCookingPage.verifyImages(width);
+  await whatsCookingPage.verifyLinks(width);
   await whatsCookingPage.verifyNewsletterSignupForm();
   await whatsCookingPage.verifyErrorMessage(browserName);
   await whatsCookingPage.verifyNewsletterSignupSuccess(generateRandomEmail());
