@@ -19,6 +19,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install GitHub CLI
+        run: |
+          sudo apt update
+          sudo apt install gh -y
+
       - name: Set up Git
         run: |
           git config user.name "GitHub Actions Bot"
@@ -29,6 +34,8 @@ jobs:
           git fetch upstream
 
       - name: Check for updates and create PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           echo "Current HEAD: $(git rev-parse HEAD)"
           echo "Upstream HEAD: $(git rev-parse upstream/main)"
@@ -36,18 +43,22 @@ jobs:
               echo "Upstream changes detected. Preparing to create a PR..."
               TIMESTAMP=$(date +%Y%m%d%H%M%S)
               UPDATE_BRANCH="update-from-upstream-$TIMESTAMP"
-
+              
               # Create and push the update branch
               git checkout -b "$UPDATE_BRANCH"
               git merge upstream/main --no-edit
               git push origin "$UPDATE_BRANCH"
 
-              # Create a Pull Request
-             gh auth login --with-token <<< "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
+              # Authenticate and create a Pull Request
+              echo "${{ secrets.PERSONAL_ACCESS_TOKEN }}" | gh auth login --with-token
               gh pr create --title "Sync from upstream" \
                            --body "This PR syncs changes from the upstream repository." \
                            --head "$UPDATE_BRANCH" \
-                           --base main || echo "Failed to create PR."
+                           --base main --verbose || echo "Failed to create PR."
           else
               echo "No updates from upstream."
           fi
+
+      - name: Verify Remote Branch
+        run: |
+          git branch -r
