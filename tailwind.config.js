@@ -6,6 +6,15 @@ export default {
   darkMode: "class",
   theme: {
     extend: {
+      keyframes: {
+        rotateTick: {
+          "0%": { transform: "rotate(-90deg)", opacity: "0" },
+          "100%": { transform: "rotate(0deg)", opacity: "1" },
+        },
+      },
+      animation: {
+        rotateTick: "rotateTick 0.3s ease-in-out",
+      },
       gridTemplateColumns: {
         "custom-10": "repeat(10,198px)",
       },
@@ -32,9 +41,14 @@ export default {
         gray10: "var(--gray10)",
         gray20: "var(--gray20)",
         gray30: "var(--gray30)",
+        gray40: "var(--gray40)",
+        gray50: "var(--gray50)",
+        gray60: "var(--gray60)",
+        info10: "var(--info10)",
 
         black10: "var(--black10)",
         black20: "var(--black20)",
+        "checkbox-tick-blue": "var(--checkbox-tick-blue)",
 
         "input-error": "var(--input-error)",
 

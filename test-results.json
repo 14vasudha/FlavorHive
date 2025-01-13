@@ -147,13 +147,13 @@
   },
   "suites": [
     {
-      "title": "home.spec.ts",
-      "file": "home.spec.ts",
+      "title": "login.spec.ts",
+      "file": "login.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "Verify details on Home Screen",
+          "title": "Navigate to login screen and login with email and password",
           "ok": true,
           "tags": [],
           "tests": [
@@ -167,17 +167,17 @@
                 {
                   "workerIndex": 0,
                   "status": "passed",
-                  "duration": 12203,
+                  "duration": 8082,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-20T09:21:18.974Z",
+                  "startTime": "2024-12-18T11:22:56.561Z",
                   "attachments": [
                     {
                       "name": "screenshot",
                       "contentType": "image/png",
-                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/home-Verify-details-on-Home-Screen-chromium/test-finished-1.png"
+                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/login-Navigate-to-login-sc-5696c-gin-with-email-and-password-chromium/test-finished-1.png"
                     }
                   ]
                 }
@@ -185,13 +185,13 @@
               "status": "expected"
             }
           ],
-          "id": "d318381359a9b96acb1e-0161fcf79ea88ac850c1",
-          "file": "home.spec.ts",
-          "line": 32,
+          "id": "41d3fd2474a19feb00a1-c6facd39f4eb6ecf8574",
+          "file": "login.spec.ts",
+          "line": 13,
           "column": 1
         },
         {
-          "title": "Navigate to Login Screen and then back to home screen and verify the details",
+          "title": "Navigate to signup screen, then to login screen and login with email and password",
           "ok": true,
           "tags": [],
           "tests": [
@@ -205,17 +205,17 @@
                 {
                   "workerIndex": 1,
                   "status": "passed",
-                  "duration": 11830,
+                  "duration": 5397,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-20T09:21:18.959Z",
+                  "startTime": "2024-12-18T11:22:56.480Z",
                   "attachments": [
                     {
                       "name": "screenshot",
                       "contentType": "image/png",
-                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/home-Navigate-to-Login-Scr-2de9d-reen-and-verify-the-details-chromium/test-finished-1.png"
+                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/login-Navigate-to-signup-s-1a88e-gin-with-email-and-password-chromium/test-finished-1.png"
                     }
                   ]
                 }
@@ -223,13 +223,13 @@
               "status": "expected"
             }
           ],
-          "id": "d318381359a9b96acb1e-13d9665a5f818f46755b",
-          "file": "home.spec.ts",
-          "line": 66,
+          "id": "41d3fd2474a19feb00a1-5f4c99d3d2313f4c2d57",
+          "file": "login.spec.ts",
+          "line": 34,
           "column": 1
         },
         {
-          "title": "Verify details on Home Screen",
+          "title": "Navigate to login screen and login with email and password",
           "ok": true,
           "tags": [],
           "tests": [
@@ -243,17 +243,17 @@
                 {
                   "workerIndex": 2,
                   "status": "passed",
-                  "duration": 12176,
+                  "duration": 8269,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-20T09:21:18.929Z",
+                  "startTime": "2024-12-18T11:22:56.558Z",
                   "attachments": [
                     {
                       "name": "screenshot",
                       "contentType": "image/png",
-                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/home-Verify-details-on-Home-Screen-chromium1/test-finished-1.png"
+                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/login-Navigate-to-login-sc-5696c-gin-with-email-and-password-chromium1/test-finished-1.png"
                     }
                   ]
                 }
@@ -261,13 +261,13 @@
               "status": "expected"
             }
           ],
-          "id": "d318381359a9b96acb1e-76cef138328dfede27ca",
-          "file": "home.spec.ts",
-          "line": 32,
+          "id": "41d3fd2474a19feb00a1-7ebef4a6328c47521ff9",
+          "file": "login.spec.ts",
+          "line": 13,
           "column": 1
         },
         {
-          "title": "Navigate to Login Screen and then back to home screen and verify the details",
+          "title": "Navigate to signup screen, then to login screen and login with email and password",
           "ok": true,
           "tags": [],
           "tests": [
@@ -281,17 +281,17 @@
                 {
                   "workerIndex": 3,
                   "status": "passed",
-                  "duration": 12028,
+                  "duration": 5547,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-20T09:21:18.964Z",
+                  "startTime": "2024-12-18T11:22:56.524Z",
                   "attachments": [
                     {
                       "name": "screenshot",
                       "contentType": "image/png",
-                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/home-Navigate-to-Login-Scr-2de9d-reen-and-verify-the-details-chromium1/test-finished-1.png"
+                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/login-Navigate-to-signup-s-1a88e-gin-with-email-and-password-chromium1/test-finished-1.png"
                     }
                   ]
                 }
@@ -299,13 +299,13 @@
               "status": "expected"
             }
           ],
-          "id": "d318381359a9b96acb1e-1435665ee8e0e79653cc",
-          "file": "home.spec.ts",
-          "line": 66,
+          "id": "41d3fd2474a19feb00a1-55dbbe79630aff8d8865",
+          "file": "login.spec.ts",
+          "line": 34,
           "column": 1
         },
         {
-          "title": "Verify details on Home Screen",
+          "title": "Navigate to login screen and login with email and password",
           "ok": true,
           "tags": [],
           "tests": [
@@ -319,17 +319,17 @@
                 {
                   "workerIndex": 4,
                   "status": "passed",
-                  "duration": 12285,
+                  "duration": 6406,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-20T09:21:32.862Z",
+                  "startTime": "2024-12-18T11:23:03.595Z",
                   "attachments": [
                     {
                       "name": "screenshot",
                       "contentType": "image/png",
-                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/home-Verify-details-on-Home-Screen-chromium2/test-finished-1.png"
+                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/login-Navigate-to-login-sc-5696c-gin-with-email-and-password-chromium2/test-finished-1.png"
                     }
                   ]
                 }
@@ -337,13 +337,13 @@
               "status": "expected"
             }
           ],
-          "id": "d318381359a9b96acb1e-8e6c52f3fa8eedd311ef",
-          "file": "home.spec.ts",
-          "line": 32,
+          "id": "41d3fd2474a19feb00a1-8fbfe12ea18ae4a8761d",
+          "file": "login.spec.ts",
+          "line": 13,
           "column": 1
         },
         {
-          "title": "Navigate to Login Screen and then back to home screen and verify the details",
+          "title": "Navigate to signup screen, then to login screen and login with email and password",
           "ok": true,
           "tags": [],
           "tests": [
@@ -357,17 +357,17 @@
                 {
                   "workerIndex": 5,
                   "status": "passed",
-                  "duration": 12314,
+                  "duration": 5702,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-20T09:21:32.919Z",
+                  "startTime": "2024-12-18T11:23:03.864Z",
                   "attachments": [
                     {
                       "name": "screenshot",
                       "contentType": "image/png",
-                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/home-Navigate-to-Login-Scr-2de9d-reen-and-verify-the-details-chromium2/test-finished-1.png"
+                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/login-Navigate-to-signup-s-1a88e-gin-with-email-and-password-chromium2/test-finished-1.png"
                     }
                   ]
                 }
@@ -375,75 +375,13 @@
               "status": "expected"
             }
           ],
-          "id": "d318381359a9b96acb1e-02d6f299462f397fcd0f",
-          "file": "home.spec.ts",
-          "line": 66,
+          "id": "41d3fd2474a19feb00a1-2539e3669d7cd0a250d6",
+          "file": "login.spec.ts",
+          "line": 34,
           "column": 1
         },
         {
-          "title": "Verify details on Home Screen",
-          "ok": false,
-          "tags": [],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "chromium3",
-              "projectName": "chromium",
-              "results": [
-                {
-                  "workerIndex": 6,
-                  "status": "failed",
-                  "duration": 9120,
-                  "error": {
-                    "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: getByTestId('text-home-menu-title-mediterranean')\nExpected string: \u001b[32m\"mediterranean\"\u001b[39m\nReceived: <element(s) not found>\nCall log:\n  \u001b[2m- expect.toContainText with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('text-home-menu-title-mediterranean')\u001b[22m\n",
-                    "stack": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: getByTestId('text-home-menu-title-mediterranean')\nExpected string: \u001b[32m\"mediterranean\"\u001b[39m\nReceived: <element(s) not found>\nCall log:\n  \u001b[2m- expect.toContainText with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('text-home-menu-title-mediterranean')\u001b[22m\n\n    at HomeMenuPage.verifyTexts (/Users/apple/Desktop/Vishu/FlavorHive/e2e/page-objects/Home/home-menu-page.ts:61:47)\n    at HomeMenuPage.verifyHomeMenuScreenDetails (/Users/apple/Desktop/Vishu/FlavorHive/e2e/page-objects/Home/home-menu-page.ts:52:5)\n    at verifyHomePage (/Users/apple/Desktop/Vishu/FlavorHive/e2e/home.spec.ts:29:3)\n    at /Users/apple/Desktop/Vishu/FlavorHive/e2e/home.spec.ts:48:5",
-                    "location": {
-                      "file": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/page-objects/Home/home-menu-page.ts",
-                      "column": 47,
-                      "line": 61
-                    },
-                    "snippet": "\u001b[90m   at \u001b[39mpage-objects/Home/home-menu-page.ts:61\n\n\u001b[0m \u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mchooseText)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"Choose from\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 60 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mweeklyOptionsText)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"100+\"\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 61 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mmediterraneanTitleText)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"mediterranean\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 62 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstarterTitleText)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"starter\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 63 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpancakeTitleText)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"pan\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 64 |\u001b[39m   }\u001b[0m"
-                  },
-                  "errors": [
-                    {
-                      "location": {
-                        "file": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/page-objects/Home/home-menu-page.ts",
-                        "column": 47,
-                        "line": 61
-                      },
-                      "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: getByTestId('text-home-menu-title-mediterranean')\nExpected string: \u001b[32m\"mediterranean\"\u001b[39m\nReceived: <element(s) not found>\nCall log:\n  \u001b[2m- expect.toContainText with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('text-home-menu-title-mediterranean')\u001b[22m\n\n\n\u001b[90m   at \u001b[39mpage-objects/Home/home-menu-page.ts:61\n\n\u001b[0m \u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mchooseText)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"Choose from\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 60 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mweeklyOptionsText)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"100+\"\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 61 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mmediterraneanTitleText)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"mediterranean\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 62 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstarterTitleText)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"starter\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 63 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpancakeTitleText)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"pan\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 64 |\u001b[39m   }\u001b[0m\n\n\u001b[2m    at HomeMenuPage.verifyTexts (/Users/apple/Desktop/Vishu/FlavorHive/e2e/page-objects/Home/home-menu-page.ts:61:47)\u001b[22m\n\u001b[2m    at HomeMenuPage.verifyHomeMenuScreenDetails (/Users/apple/Desktop/Vishu/FlavorHive/e2e/page-objects/Home/home-menu-page.ts:52:5)\u001b[22m\n\u001b[2m    at verifyHomePage (/Users/apple/Desktop/Vishu/FlavorHive/e2e/home.spec.ts:29:3)\u001b[22m\n\u001b[2m    at /Users/apple/Desktop/Vishu/FlavorHive/e2e/home.spec.ts:48:5\u001b[22m"
-                    }
-                  ],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2024-11-20T09:21:32.937Z",
-                  "attachments": [
-                    {
-                      "name": "screenshot",
-                      "contentType": "image/png",
-                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/home-Verify-details-on-Home-Screen-chromium3/test-failed-1.png"
-                    }
-                  ],
-                  "errorLocation": {
-                    "file": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/page-objects/Home/home-menu-page.ts",
-                    "column": 47,
-                    "line": 61
-                  }
-                }
-              ],
-              "status": "unexpected"
-            }
-          ],
-          "id": "d318381359a9b96acb1e-86d50f6df911313b8237",
-          "file": "home.spec.ts",
-          "line": 32,
-          "column": 1
-        },
-        {
-          "title": "Navigate to Login Screen and then back to home screen and verify the details",
+          "title": "Navigate to login screen and login with email and password",
           "ok": true,
           "tags": [],
           "tests": [
@@ -457,17 +395,17 @@
                 {
                   "workerIndex": 7,
                   "status": "passed",
-                  "duration": 11924,
+                  "duration": 7148,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-20T09:21:33.010Z",
+                  "startTime": "2024-12-18T11:23:06.844Z",
                   "attachments": [
                     {
                       "name": "screenshot",
                       "contentType": "image/png",
-                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/home-Navigate-to-Login-Scr-2de9d-reen-and-verify-the-details-chromium3/test-finished-1.png"
+                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/login-Navigate-to-login-sc-5696c-gin-with-email-and-password-chromium3/test-finished-1.png"
                     }
                   ]
                 }
@@ -475,13 +413,51 @@
               "status": "expected"
             }
           ],
-          "id": "d318381359a9b96acb1e-d71f7504c3584a83bb9b",
-          "file": "home.spec.ts",
-          "line": 66,
+          "id": "41d3fd2474a19feb00a1-2a1f9d4cbbe9779c986b",
+          "file": "login.spec.ts",
+          "line": 13,
           "column": 1
         },
         {
-          "title": "Verify details on Home Screen",
+          "title": "Navigate to signup screen, then to login screen and login with email and password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium3",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "status": "passed",
+                  "duration": 5099,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2024-12-18T11:23:06.735Z",
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/login-Navigate-to-signup-s-1a88e-gin-with-email-and-password-chromium3/test-finished-1.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "41d3fd2474a19feb00a1-2fa314c39d2514eac970",
+          "file": "login.spec.ts",
+          "line": 34,
+          "column": 1
+        },
+        {
+          "title": "Navigate to login screen and login with email and password",
           "ok": true,
           "tags": [],
           "tests": [
@@ -495,17 +471,17 @@
                 {
                   "workerIndex": 8,
                   "status": "passed",
-                  "duration": 11119,
+                  "duration": 5160,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-20T09:21:46.276Z",
+                  "startTime": "2024-12-18T11:23:11.164Z",
                   "attachments": [
                     {
                       "name": "screenshot",
                       "contentType": "image/png",
-                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/home-Verify-details-on-Home-Screen-chromium4/test-finished-1.png"
+                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/login-Navigate-to-login-sc-5696c-gin-with-email-and-password-chromium4/test-finished-1.png"
                     }
                   ]
                 }
@@ -513,13 +489,13 @@
               "status": "expected"
             }
           ],
-          "id": "d318381359a9b96acb1e-9e9f9b469f28d79fe5bf",
-          "file": "home.spec.ts",
-          "line": 32,
+          "id": "41d3fd2474a19feb00a1-e00bb3a27029e1892d77",
+          "file": "login.spec.ts",
+          "line": 13,
           "column": 1
         },
         {
-          "title": "Navigate to Login Screen and then back to home screen and verify the details",
+          "title": "Navigate to signup screen, then to login screen and login with email and password",
           "ok": true,
           "tags": [],
           "tests": [
@@ -533,17 +509,17 @@
                 {
                   "workerIndex": 9,
                   "status": "passed",
-                  "duration": 10795,
+                  "duration": 5224,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-20T09:21:47.450Z",
+                  "startTime": "2024-12-18T11:23:11.514Z",
                   "attachments": [
                     {
                       "name": "screenshot",
                       "contentType": "image/png",
-                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/home-Navigate-to-Login-Scr-2de9d-reen-and-verify-the-details-chromium4/test-finished-1.png"
+                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/login-Navigate-to-signup-s-1a88e-gin-with-email-and-password-chromium4/test-finished-1.png"
                     }
                   ]
                 }
@@ -551,13 +527,13 @@
               "status": "expected"
             }
           ],
-          "id": "d318381359a9b96acb1e-3e1115fecf3d347b43ba",
-          "file": "home.spec.ts",
-          "line": 66,
+          "id": "41d3fd2474a19feb00a1-8dc9940b87b59bafc952",
+          "file": "login.spec.ts",
+          "line": 34,
           "column": 1
         },
         {
-          "title": "Verify details on Home Screen",
+          "title": "Navigate to login screen and login with email and password",
           "ok": true,
           "tags": [],
           "tests": [
@@ -571,17 +547,17 @@
                 {
                   "workerIndex": 10,
                   "status": "passed",
-                  "duration": 17951,
+                  "duration": 12625,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-20T09:21:47.425Z",
+                  "startTime": "2024-12-18T11:23:13.671Z",
                   "attachments": [
                     {
                       "name": "screenshot",
                       "contentType": "image/png",
-                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/home-Verify-details-on-Home-Screen-firefox/test-finished-1.png"
+                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/login-Navigate-to-login-sc-5696c-gin-with-email-and-password-firefox/test-finished-1.png"
                     }
                   ]
                 }
@@ -589,13 +565,13 @@
               "status": "expected"
             }
           ],
-          "id": "d318381359a9b96acb1e-c8b24ec6ea68f95e9ca1",
-          "file": "home.spec.ts",
-          "line": 32,
+          "id": "41d3fd2474a19feb00a1-8e623cf7268e422194dd",
+          "file": "login.spec.ts",
+          "line": 13,
           "column": 1
         },
         {
-          "title": "Navigate to Login Screen and then back to home screen and verify the details",
+          "title": "Navigate to signup screen, then to login screen and login with email and password",
           "ok": true,
           "tags": [],
           "tests": [
@@ -609,17 +585,17 @@
                 {
                   "workerIndex": 11,
                   "status": "passed",
-                  "duration": 17594,
+                  "duration": 10582,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-20T09:21:50.204Z",
+                  "startTime": "2024-12-18T11:23:15.922Z",
                   "attachments": [
                     {
                       "name": "screenshot",
                       "contentType": "image/png",
-                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/home-Navigate-to-Login-Scr-2de9d-reen-and-verify-the-details-firefox/test-finished-1.png"
+                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/login-Navigate-to-signup-s-1a88e-gin-with-email-and-password-firefox/test-finished-1.png"
                     }
                   ]
                 }
@@ -627,13 +603,13 @@
               "status": "expected"
             }
           ],
-          "id": "d318381359a9b96acb1e-917d14f5f68cb5b7cecc",
-          "file": "home.spec.ts",
-          "line": 66,
+          "id": "41d3fd2474a19feb00a1-632546490b72c81b7386",
+          "file": "login.spec.ts",
+          "line": 34,
           "column": 1
         },
         {
-          "title": "Verify details on Home Screen",
+          "title": "Navigate to login screen and login with email and password",
           "ok": true,
           "tags": [],
           "tests": [
@@ -647,17 +623,17 @@
                 {
                   "workerIndex": 12,
                   "status": "passed",
-                  "duration": 12861,
+                  "duration": 9885,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-20T09:22:00.464Z",
+                  "startTime": "2024-12-18T11:23:18.259Z",
                   "attachments": [
                     {
                       "name": "screenshot",
                       "contentType": "image/png",
-                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/home-Verify-details-on-Home-Screen-webkit/test-finished-1.png"
+                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/login-Navigate-to-login-sc-5696c-gin-with-email-and-password-webkit/test-finished-1.png"
                     }
                   ]
                 }
@@ -665,13 +641,13 @@
               "status": "expected"
             }
           ],
-          "id": "d318381359a9b96acb1e-480ad4f4a8c3283f0759",
-          "file": "home.spec.ts",
-          "line": 32,
+          "id": "41d3fd2474a19feb00a1-1e6dfe7fb805b0be93d9",
+          "file": "login.spec.ts",
+          "line": 13,
           "column": 1
         },
         {
-          "title": "Navigate to Login Screen and then back to home screen and verify the details",
+          "title": "Navigate to signup screen, then to login screen and login with email and password",
           "ok": true,
           "tags": [],
           "tests": [
@@ -685,17 +661,17 @@
                 {
                   "workerIndex": 13,
                   "status": "passed",
-                  "duration": 13266,
+                  "duration": 7042,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2024-11-20T09:22:01.067Z",
+                  "startTime": "2024-12-18T11:23:18.661Z",
                   "attachments": [
                     {
                       "name": "screenshot",
                       "contentType": "image/png",
-                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/home-Navigate-to-Login-Scr-2de9d-reen-and-verify-the-details-webkit/test-finished-1.png"
+                      "path": "/Users/apple/Desktop/Vishu/FlavorHive/e2e/report/test-results/login-Navigate-to-signup-s-1a88e-gin-with-email-and-password-webkit/test-finished-1.png"
                     }
                   ]
                 }
@@ -703,9 +679,9 @@
               "status": "expected"
             }
           ],
-          "id": "d318381359a9b96acb1e-686d6fa2d5989c5fb0b4",
-          "file": "home.spec.ts",
-          "line": 66,
+          "id": "41d3fd2474a19feb00a1-8fcf95b5d4fd0ca5f2a0",
+          "file": "login.spec.ts",
+          "line": 34,
           "column": 1
         }
       ]
@@ -713,11 +689,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2024-11-20T09:21:17.674Z",
-    "duration": 57210.577,
-    "expected": 13,
+    "startTime": "2024-12-18T11:22:55.252Z",
+    "duration": 34421.973999999995,
+    "expected": 14,
     "skipped": 0,
-    "unexpected": 1,
+    "unexpected": 0,
     "flaky": 0
   }
 }
