@@ -30,6 +30,7 @@ const GettingStarted = () => {
         <Button
           data-testid="btn-home-getting-started-see-plans"
           className="h-12 w-60 text-base tracking-[2.5px]"
+          rounded="triplexl"
         >
           See Plans
         </Button>
