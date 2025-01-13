@@ -43,7 +43,7 @@ jobs:
               git push origin "$UPDATE_BRANCH"
 
               # Create a Pull Request
-              gh auth login --with-token <<< "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
+             gh auth login --with-token <<< "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
               gh pr create --title "Sync from upstream" \
                            --body "This PR syncs changes from the upstream repository." \
                            --head "$UPDATE_BRANCH" \
