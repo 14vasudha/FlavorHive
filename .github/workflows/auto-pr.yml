@@ -1,43 +1,65 @@
-name: Sync Upstream Repository
+name: Sync Upstream
 
 on:
   schedule:
-    - cron: '*/2 * * * *'  # Runs every 5 minutes
-  push:
-    branches:
-      - main  # Replace with your branch if it's different
+    - cron: "*/2 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   sync:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install GitHub CLI
+        run: |
+          sudo apt update
+          sudo apt install gh -y
 
       - name: Set up Git
         run: |
-          git config --global user.name 'github-actions'
-          git config --global user.email 'github-actions@github.com'
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          if ! git remote | grep -q upstream; then
+              git remote add upstream https://github.com/Vishu-Organization/FlavorHive
+          fi
+          git fetch upstream
 
-      - name: Add Upstream Remote
-        run: git remote add upstream https://github.com/Vishu-Organization/FlavorHive.git
-
-      - name: Fetch Upstream Changes
-        run: git fetch upstream
-
-      - name: Merge Upstream Changes into your Branch (with automatic conflict resolution)
+      - name: Check for updates and create PR
+        env:
+            GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
-          git checkout main
-          git merge upstream/main -X theirs --allow-unrelated-histories  # Allow unrelated histories and automatically resolve conflicts by keeping upstream changes
+          echo "Current HEAD: $(git rev-parse HEAD)"
+          echo "Upstream HEAD: $(git rev-parse upstream/main)"
+          if [ "$(git rev-parse HEAD)" != "$(git rev-parse upstream/main)" ]; then
+              echo "Upstream changes detected. Preparing to create a PR..."
+              TIMESTAMP=$(date +%Y%m%d%H%M%S)
+              UPDATE_BRANCH="update-from-upstream-$TIMESTAMP"
+              
+              # Create and push the update branch
+              git checkout -b "$UPDATE_BRANCH"
+              git merge upstream/main --no-edit
+              git push origin "$UPDATE_BRANCH"
 
-      - name: Pull Latest Changes from Origin Main
-        run: |
-          git pull --rebase origin main  # Fetch and rebase the latest changes from the remote
+              # Create a Pull Request using GitHub CLI (automatically authenticated)
+              gh pr create --title "Sync from upstream" \
+                           --body "This PR syncs changes from the upstream repository." \
+                           --head "$UPDATE_BRANCH" \
+                           --base main || echo "Failed to create PR."
+          else
+              echo "No updates from upstream."
+          fi
 
-      - name: Check for Changes
+      - name: Verify Remote Branch
         run: |
-          git status
-          git diff --exit-code || echo "Changes detected"  # Check if there are changes to commit
+          git branch -r
 
   
