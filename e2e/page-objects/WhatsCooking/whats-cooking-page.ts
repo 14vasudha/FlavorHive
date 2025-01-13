@@ -41,8 +41,24 @@ export class WhatsCookingPage {
     return this.page.locator("#input-newsletter-signup");
   }
 
+  get fromTheBlogItemImg() {
+    return this.page.getByTestId("img-blog-item");
+  }
+
+  get fromTheBlogItemLink() {
+    return this.page.getByTestId("link-external-blog-item");
+  }
+
   get goBtn() {
     return this.page.getByTestId("btn-go");
+  }
+
+  async verifyImages(width: number) {
+    if (width === 640) {
+      await expect(this.fromTheBlogItemImg).toBeHidden();
+    } else {
+      await expect(this.fromTheBlogItemImg).toBeVisible();
+    }
   }
 
   async verifyInfoText(width: number) {
@@ -61,11 +77,16 @@ export class WhatsCookingPage {
     }
   }
 
-  async verifyLinks() {
+  async verifyLinks(width: number) {
     await expect(this.instagramLink).toBeVisible();
     await expect(this.facebookLink).toBeVisible();
     await expect(this.pinterestLink).toBeVisible();
     await expect(this.youTubeLink).toBeVisible();
+    if (width === 640) {
+      await expect(this.fromTheBlogItemImg).toBeHidden();
+    } else {
+      await expect(this.fromTheBlogItemImg).toBeVisible();
+    }
   }
 
   async verifyNewsletterSignupForm() {

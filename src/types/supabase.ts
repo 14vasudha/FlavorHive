@@ -349,6 +349,139 @@ export type Database = {
       [_ in never]: never
     }
   }
+  recipe_filter: {
+    Tables: {
+      cuisine_type: {
+        Row: {
+          created_at: string | null
+          id: number
+          updated_at: string | null
+          value: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: never
+          updated_at?: string | null
+          value: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: never
+          updated_at?: string | null
+          value?: string
+        }
+        Relationships: []
+      }
+      diet_labels: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: number
+          label: string | null
+          value: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: number
+          label?: string | null
+          value?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: number
+          label?: string | null
+          value?: string
+        }
+        Relationships: []
+      }
+      dish_type: {
+        Row: {
+          created_at: string | null
+          id: number
+          label: string | null
+          updated_at: string | null
+          value: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: never
+          label?: string | null
+          updated_at?: string | null
+          value: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: never
+          label?: string | null
+          updated_at?: string | null
+          value?: string
+        }
+        Relationships: []
+      }
+      health_labels: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: number
+          label: string
+          value: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: number
+          label?: string
+          value?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: number
+          label?: string
+          value?: string
+        }
+        Relationships: []
+      }
+      meal_type: {
+        Row: {
+          created_at: string | null
+          id: number
+          label: string
+          updated_at: string | null
+          value: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: never
+          label?: string
+          updated_at?: string | null
+          value: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: never
+          label?: string
+          updated_at?: string | null
+          value?: string
+        }
+        Relationships: []
+      }
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      [_ in never]: never
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
+  }
   sign_up: {
     Tables: {
       additional_info: {
