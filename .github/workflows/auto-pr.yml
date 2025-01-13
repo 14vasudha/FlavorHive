@@ -2,8 +2,8 @@ name: Sync Upstream
 
 on:
   schedule:
-    - cron: "0 0 * * *" 
-  workflow_dispatch:  # Allows manual triggering
+    - cron: "0 0 * * *"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -23,29 +23,31 @@ jobs:
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
-          git remote add upstream https://github.com/Vishu-Organization/FlavorHive
+          if ! git remote | grep -q upstream; then
+              git remote add upstream https://github.com/Vishu-Organization/FlavorHive
+          fi
           git fetch upstream
 
       - name: Check for updates and create PR
         run: |
-          # Check if upstream changes exist
+          echo "Current HEAD: $(git rev-parse HEAD)"
+          echo "Upstream HEAD: $(git rev-parse upstream/main)"
           if [ "$(git rev-parse HEAD)" != "$(git rev-parse upstream/main)" ]; then
               echo "Upstream changes detected. Preparing to create a PR..."
               TIMESTAMP=$(date +%Y%m%d%H%M%S)
               UPDATE_BRANCH="update-from-upstream-$TIMESTAMP"
-              
+
               # Create and push the update branch
               git checkout -b "$UPDATE_BRANCH"
               git merge upstream/main --no-edit
               git push origin "$UPDATE_BRANCH"
 
               # Create a Pull Request
+              gh auth login --with-token <<< "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
               gh pr create --title "Sync from upstream" \
                            --body "This PR syncs changes from the upstream repository." \
                            --head "$UPDATE_BRANCH" \
-                           --base main
+                           --base main || echo "Failed to create PR."
           else
               echo "No updates from upstream."
           fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
