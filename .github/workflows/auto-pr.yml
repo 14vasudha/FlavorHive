@@ -34,7 +34,7 @@ jobs:
           git fetch upstream
 
       - name: Check for updates and create PR
-         env:
+        env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           echo "Current HEAD: $(git rev-parse HEAD)"
