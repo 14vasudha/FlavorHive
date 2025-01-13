@@ -1,4 +1,5 @@
 import {
+  Outlet,
   createRootRoute,
   createRoute,
   createRouter,
@@ -7,6 +8,7 @@ import {
   getHomeData,
   getSignupData,
   useGetOurVisionScreenDetails,
+  useGetRecipeDetailData,
 } from "./services/use-queries";
 import DefaultLayout from "./components/layout/DefaultLayout";
 
@@ -80,8 +82,28 @@ const signUpRoute = createRoute({
 const menuRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "on-the-menu",
-  component: () => <p>We are building the menu. Please visit later</p>,
+  component: () => <Outlet />,
 });
+
+const menuIndexRoute = createRoute({
+  getParentRoute: () => menuRoute,
+  path: "/",
+}).lazy(() => import("./pages/OnTheMenuPage").then((d) => d.Route));
+
+const recipeRoute = createRoute({
+  getParentRoute: () => menuRoute,
+  path: "recipe",
+});
+
+const recipeIndexRoute = createRoute({
+  getParentRoute: () => recipeRoute,
+  path: "/",
+});
+const recipeDetailRoute = createRoute({
+  getParentRoute: () => recipeRoute,
+  path: "$recipeId",
+  loader: ({ params: { recipeId } }) => useGetRecipeDetailData(recipeId),
+}).lazy(() => import("./pages/RecipeDetailPage").then((d) => d.Route));
 
 const helpCenterRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -95,7 +117,10 @@ const routeTree = rootRoute.addChildren([
   indexRoute,
   aboutRoute,
   helpCenterRoute,
-  menuRoute,
+  menuRoute.addChildren([
+    menuIndexRoute,
+    recipeRoute.addChildren([recipeIndexRoute, recipeDetailRoute]),
+  ]),
   pagesRoute.addChildren([visionRoute, blogRoute, termsRoute, privacyRoute]),
   usersRoute.addChildren([signInRoute, signUpRoute]),
 ]);
