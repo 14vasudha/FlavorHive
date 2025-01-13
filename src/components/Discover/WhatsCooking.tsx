@@ -9,8 +9,15 @@ import { useForm } from "@tanstack/react-form";
 import { zodValidator } from "@tanstack/zod-form-adapter";
 import { z } from "zod";
 import { useInsertNewsLetterSubscriber } from "../../services/use-mutations";
+import { useGetFoodBlogs } from "../../services/use-queries";
+import Loader from "../layout/Loader";
 
 const WhatsCooking = () => {
+  const {
+    data: { recipes: [recipe = null] = [] } = {},
+    isPending: isBlogPending,
+  } = useGetFoodBlogs(1, true);
+
   const icons = [
     {
       name: "instagram",
@@ -150,21 +157,50 @@ const WhatsCooking = () => {
           data-testid="info-offers"
           className="mt-4 align-baseline text-sm font-normal leading-relaxed text-header-primary md:mt-0"
         >
-          Sign up for offers, recipes, news, & more (subscribers to the Blue
-          Apron recipe newsletter agree to our Privacy Policy)
+          Sign up for offers, recipes, news, & more (subscribers to the
+          FlavorHive recipe newsletter agree to our Privacy Policy)
         </aside>
       </div>
       <div
         id="blog-preview"
-        className="hidden p-5 md:block lg:border-l-2 lg:border-gray-200"
+        className="hidden space-y-4 p-5 md:block lg:border-l-2 lg:border-gray-200"
       >
         <h3
           data-testid="text-from-the-blog"
-          className="hidden text-center text-sm font-medium uppercase tracking-widest text-black10 md:block"
+          className="text-center text-sm font-medium uppercase tracking-widest text-black10 md:block"
         >
           From the blog
         </h3>
-        <div className="text-center">Blog Image and link will go here</div>
+
+        {isBlogPending ? (
+          <Loader />
+        ) : (
+          recipe && (
+            <div className="flex items-center justify-center gap-5">
+              <div className="relative overflow-hidden rounded-lg">
+                <div className="group">
+                  <img
+                    data-testid="img-blog-item"
+                    src={recipe.image}
+                    alt={recipe.title}
+                    className="size-24 w-full rounded-md transition-transform duration-300 group-hover:scale-110"
+                  />
+                </div>
+              </div>
+              <span className="w-40 text-sm leading-tight text-black10">
+                <a
+                  aria-label={recipe.title}
+                  data-testid="link-external-blog-item"
+                  href={recipe.sourceUrl}
+                  target="_blank"
+                  className="cursor-pointer"
+                >
+                  {recipe.title}
+                </a>
+              </span>
+            </div>
+          )
+        )}
       </div>
     </section>
   );
