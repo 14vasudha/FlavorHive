@@ -32,19 +32,12 @@ jobs:
           git merge upstream/main -X theirs --allow-unrelated-histories  # Allow unrelated histories and automatically resolve conflicts by keeping upstream changes
 
       - name: Pull Latest Changes from Origin Main
-        run: git pull origin main  # Fetch and merge the latest changes from the remote
+        run: |
+          git pull --rebase origin main  # Fetch and rebase the latest changes from the remote
 
       - name: Check for Changes
         run: |
           git status
           git diff --exit-code || echo "Changes detected"  # Check if there are changes to commit
 
-      - name: Push Changes to Your Repository
-        run: |
-          git push origin main  # Push changes to your repository if any
-
-      - name: Create a Pull Request
-        run: |
-          git diff --exit-code || gh pr create --base main --head main --title "Sync with upstream" --body "Automatically synced with upstream repo" --repo 14vasudha/FlavorHive
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
