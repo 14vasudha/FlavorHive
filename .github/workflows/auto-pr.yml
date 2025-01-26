@@ -31,10 +31,17 @@ jobs:
           if ! git remote | grep -q upstream; then
               git remote add upstream https://github.com/Vishu-Organization/FlavorHive
           fi
+          git remote -v  # Debug log
+
+      - name: Fetch updates from upstream
+        run: |
           git fetch upstream
+          git branch -r  # Debug log
 
       - name: Authenticate GitHub CLI
-        run: echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+          gh auth status  # Debug log
 
       - name: Check for updates and create PR
         env:
@@ -65,4 +72,3 @@ jobs:
       - name: Verify Remote Branch
         run: |
           git branch -r
-
