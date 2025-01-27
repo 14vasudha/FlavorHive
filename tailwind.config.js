@@ -57,7 +57,7 @@ export default {
           black: "var(--black)",
           "toggle-text": "var(--toggle-text)",
           info: "var(--info)",
-          hover: "var(--blue30)",
+          hover: "var(--blue20)",
         },
         footer: {
           primary: "#a1bce6",
